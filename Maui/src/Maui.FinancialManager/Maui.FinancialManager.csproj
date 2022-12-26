@@ -33,12 +33,15 @@
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-ios|AnyCPU'">
 	  <CreatePackage>false</CreatePackage>
 	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-ios|AnyCPU'">
+	  <CreatePackage>false</CreatePackage>
+	</PropertyGroup>
 	<ItemGroup>
 		<!-- App Icon -->
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#FFFFFF" />
 
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#FFFFFF" BaseSize="128,128" />
 
 		<!-- Images -->
 		<MauiFont Include="Resources\Fonts\*" />
@@ -49,6 +52,8 @@
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0" />
+		<PackageReference Include="CommunityToolkit.Maui" Version="3.1.0" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -60,14 +65,69 @@
 	<ItemGroup>
 	  <None Remove="Views\" />
 	  <None Remove="ViewModels\" />
+	  <None Remove="Serializers\" />
+	  <None Remove="Models\" />
+	  <None Remove="Searchers\" />
+	  <None Remove="Searchers\Base\" />
+	  <None Remove="Configuration\" />
+	  <None Remove="CommunityToolkit.Mvvm" />
+	  <None Remove="Helpers\" />
+	  <None Remove="Views\Mobile\" />
+	  <None Remove="CommunityToolkit.Maui" />
+	  <None Remove="Messages\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="Views\" />
 	  <Folder Include="ViewModels\" />
+	  <Folder Include="Serializers\" />
+	  <Folder Include="Models\" />
+	  <Folder Include="Searchers\" />
+	  <Folder Include="Searchers\Base\" />
+	  <Folder Include="Configuration\" />
+	  <Folder Include="Helpers\" />
+	  <Folder Include="Views\Mobile\" />
+	  <Folder Include="Messages\" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Compile Update="Resources\SearchUrls.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>SearchUrls.resx</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+	<ItemGroup>
+	  <EmbeddedResource Update="Resources\SearchUrls.resx">
+	    <Generator>ResXFileCodeGenerator</Generator>
+	    <LastGenOutput>SearchUrls.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiXaml Update="Views\MedicinePricesPage.xaml">
 	    <SubType></SubType>
 	  </MauiXaml>
+	  <MauiXaml Condition=" '$(EnableDefaultXamlItems)' == 'true' " Update="AppShell %28copy%29.xaml">
+	    <SubType>Designer</SubType>
+	  </MauiXaml>
+	  <MauiXaml Condition=" '$(EnableDefaultXamlItems)' == 'true' " Update="AppShellMobile.xaml">
+	    <SubType>Designer</SubType>
+	  </MauiXaml>
+	  <MauiXaml Condition=" '$(EnableDefaultXamlItems)' == 'true' " Update="Views\MainPage.xaml">
+	    <SubType>Designer</SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\LoginView.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Mobile\HomeMobile.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\LoginPage.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Mobile\HomeMobilePage.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\Maui.FinancialManager.Core\Maui.FinancialManager.Core.csproj" />
 	</ItemGroup>
 </Project>

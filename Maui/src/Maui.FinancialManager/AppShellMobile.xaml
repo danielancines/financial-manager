@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="Maui.FinancialManager.AppShellMobile"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:Maui.FinancialManager.Views"
+    xmlns:viewsMobile="clr-namespace:Maui.FinancialManager.Views.Mobile"
+    Shell.FlyoutBehavior="Flyout">
+
+    <ShellContent
+        Title="Home - Mobile"
+        ContentTemplate="{DataTemplate views:LoginPage}"
+        Route="login" />
+
+    <FlyoutItem Title="HOme"
+                Icon="dog.png"
+                Route="home1"
+                IsVisible="True">
+        <Tab>
+            <ShellContent ContentTemplate="{DataTemplate viewsMobile:HomeMobilePage}" />
+        </Tab>
+    </FlyoutItem>
+
+    <FlyoutItem Title="Medicine Prices"
+                Icon="dog.png"
+                Route="MedicinePrices"
+                IsVisible="True">
+        <Tab>
+            <ShellContent ContentTemplate="{DataTemplate views:MedicinePricesPage}" />
+        </Tab>
+    </FlyoutItem>
+
+    <TabBar Route="Home">
+        <ShellContent Title="One"/>
+        <ShellContent Title="Medicines" Route="MedicineSearch" ContentTemplate="{DataTemplate views:MedicinePricesPage}"/>
+    </TabBar>
+</Shell>

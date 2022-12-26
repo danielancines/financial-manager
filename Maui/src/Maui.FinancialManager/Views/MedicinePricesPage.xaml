@@ -6,12 +6,12 @@
     <Grid RowDefinitions="Auto, Auto, *, Auto" Margin="15">
         <Border StrokeShape="RoundRectangle 4" >
             <Grid ColumnDefinitions="*, Auto" Margin="5">
-                <Entry Text="{Binding SearchTerm}" Margin="5" Placeholder="O que você procura?"/>
+                <Entry Text="{Binding SearchTerm}" Margin="5" ReturnType="Search" ReturnCommand="{Binding SearchCommand}" Placeholder="O que você procura?"/>
                 <ActivityIndicator IsRunning="{Binding LoadingData}" Grid.Column="0" HorizontalOptions="End" Margin="0,0,10,0"/>
                 <Button Text="Search" Command="{Binding SearchCommand}" Grid.Column="1" Margin="5" MinimumWidthRequest="100"/>
             </Grid>
         </Border>
-
+         
         <Label HorizontalOptions="Center" Text="Resultados Encontrados" Grid.Row="1" Grid.ColumnSpan="2" Margin="0,10,0,0"/>
         <Border StrokeThickness="1" StrokeShape="RoundRectangle 4" Grid.Row="2" Grid.ColumnSpan="2">
             <CollectionView ItemsSource="{Binding Medicines}" SelectionMode="Single" VerticalScrollBarVisibility="Always" Margin="5">

@@ -8,8 +8,8 @@
     Shell.FlyoutBehavior="Flyout">
 
     <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
+        Title="Home - Desktop"
+        ContentTemplate="{DataTemplate views:MainPage}"
         Route="MainPage" />
 
     <FlyoutItem Title="Medicine Prices"
