@@ -13,6 +13,8 @@ public class Medicine
 
     public float OldPrice { get; set; }
 
+    public string PackageQuantity { get; set; }
+
     public DateTime ExpireDate { get; set; }
 
     public override string ToString()

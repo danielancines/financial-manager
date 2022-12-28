@@ -9,12 +9,8 @@ public class DrogaraiaSerializer
     {
         var medicines = new List<Medicine>();
 
-        JsonElement data;
-        if (!JsonSerializer.Deserialize<JsonElement>(rawResult).TryGetProperty("data", out data))
-            return medicines;
-
         JsonElement search;
-        if (!data.TryGetProperty("search", out search))
+        if (!JsonSerializer.Deserialize<JsonElement>(rawResult).TryGetProperty("search", out search))
             return medicines;
 
         JsonElement products;
@@ -30,6 +26,7 @@ public class DrogaraiaSerializer
             if (item.GetProperty("oldPrice").ValueKind != JsonValueKind.Null)
                 newMedicine.OldPrice = (float)item.GetProperty("oldPrice").GetProperty("value").GetDecimal();
             newMedicine.Price = (float)item.GetProperty("price").GetProperty("value").GetDecimal();
+            newMedicine.PackageQuantity = item.GetProperty("packageQty").GetString();
             newMedicine.DrugStore = "Droga Raia";
             newMedicine.Thumbnail = item.GetProperty("image").GetString();
 

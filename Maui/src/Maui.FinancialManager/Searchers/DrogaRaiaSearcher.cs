@@ -1,6 +1,7 @@
-﻿using System.Text;
+﻿using GraphQL;
+using GraphQL.Client.Http;
+using GraphQL.Client.Serializer.Newtonsoft;
 using Maui.FinancialManager.Models;
-using Maui.FinancialManager.Resources;
 using Maui.FinancialManager.Searchers.Base;
 using Maui.FinancialManager.Serializers;
 
@@ -15,13 +16,36 @@ public class DrogaRaiaSearcher : IMedicineSearcher
         var httpClient = new HttpClient();
         httpClient.DefaultRequestHeaders.Add("x-api-key", "5f308895c59fadb0b9ed43341c6eb33e41e78394d3ca970c5a285e91d25bc9cd");
 
-        var content = new StringContent(SearchUrls.DrogaRaia.Replace("!searchTerm!", searchTerm), Encoding.UTF8, "application/json");
-
-        var response = await httpClient.PostAsync(string.Format(URL, searchTerm), content);
-
-        if (response.IsSuccessStatusCode)
+        var graphQLHttpClientOptions = new GraphQLHttpClientOptions
         {
-            return DrogaraiaSerializer.Deserialize(await response.Content.ReadAsStringAsync());
+            EndPoint = new Uri(URL)
+        };
+
+        var graphQLClient = new GraphQLHttpClient(graphQLHttpClientOptions, new NewtonsoftJsonSerializer(), httpClient);
+        var request = new GraphQLRequest
+        {
+            Query = @"
+            {
+                search(search: {term: ""!term!""} ,isStixNewAccelerator: true, token: """") {
+                    products {
+                        name,
+                        image,
+                        packageQty,
+                        oldPrice {
+                            value
+                        },
+                        price {
+                            value
+                        }
+                    }
+                }
+            }".Replace("!term!", searchTerm)
+        };
+
+        var graphQLResponse = await graphQLClient.SendQueryAsync<dynamic>(request);
+        if (graphQLResponse.Data != null)
+        {
+            return DrogaraiaSerializer.Deserialize(graphQLResponse.Data.ToString());
         }
         else
         {

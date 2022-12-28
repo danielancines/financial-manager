@@ -54,6 +54,11 @@
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0" />
 		<PackageReference Include="CommunityToolkit.Maui" Version="3.1.0" />
+		<PackageReference Include="GraphQL" Version="7.2.1" />
+		<PackageReference Include="GraphQL.SystemTextJson" Version="7.2.1" />
+		<PackageReference Include="GraphQL.Client" Version="5.1.0" />
+		<PackageReference Include="GraphQL.Client.Serializer.Newtonsoft" Version="5.1.0" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -75,6 +80,11 @@
 	  <None Remove="Views\Mobile\" />
 	  <None Remove="CommunityToolkit.Maui" />
 	  <None Remove="Messages\" />
+	  <None Remove="GraphQL" />
+	  <None Remove="GraphQL.SystemTextJson" />
+	  <None Remove="GraphQL.Client" />
+	  <None Remove="GraphQL.Client.Serializer.Newtonsoft" />
+	  <None Remove="Newtonsoft.Json" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="Views\" />
