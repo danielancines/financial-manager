@@ -99,6 +99,9 @@
 	  <Folder Include="Messages\" />
 	</ItemGroup>
 	<ItemGroup>
+	  <ProjectReference Include="..\Maui.FinancialManager.Core\Maui.FinancialManager.Core.csproj" />
+	</ItemGroup>
+	<ItemGroup>
 	  <Compile Update="Resources\SearchUrls.Designer.cs">
 	    <DesignTime>True</DesignTime>
 	    <AutoGen>True</AutoGen>

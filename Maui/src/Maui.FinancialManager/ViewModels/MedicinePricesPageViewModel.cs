@@ -1,17 +1,17 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Maui.FinancialManager.Core.Collections;
+using Maui.FinancialManager.Core.Collections.Specialized;
 using Maui.FinancialManager.Helpers;
 using Maui.FinancialManager.Models;
 using Maui.FinancialManager.Searchers.Base;
-using System.Collections.ObjectModel;
 
 namespace Maui.FinancialManager.ViewModels;
 
 public partial class MedicinePricesPageViewModel : ObservableObject
 {
     readonly List<IMedicineSearcher> MedicineSearchers = new();
-    //public OrderedObservableCollection<Medicine> Medicines { get; set; } = new("Price", OrderedPropertyType.Float);
-    public ObservableCollection<Medicine> Medicines { get; set; } = new();
+    public OrderedObservableCollection<Medicine> Medicines { get; set; } = new("Price", OrderedPropertyType.Float);
     public string SearchTerm { get; set; }
 
     public MedicinePricesPageViewModel()
@@ -45,8 +45,7 @@ public partial class MedicinePricesPageViewModel : ObservableObject
     {
         var medicines = await searcher.SearchAsync(this.SearchTerm);
         foreach (var medicine in medicines)
-            //this.Medicines.AddOrdered(medicine);
-            this.Medicines.Add(medicine);
+            this.Medicines.AddOrdered(medicine);
     }
 }
 
