@@ -1,12 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
-using Maui.FinancialManager.Core.Collections;
-using Maui.FinancialManager.Core.Collections.Specialized;
 using Maui.FinancialManager.Helpers;
 using Maui.FinancialManager.Messages;
-using Maui.FinancialManager.Models;
-using Maui.FinancialManager.Searchers.Base;
 using Maui.FinancialManager.Views.Mobile;
 
 namespace Maui.FinancialManager.ViewModels;
