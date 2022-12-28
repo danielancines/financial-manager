@@ -13,7 +13,7 @@ public partial class LoginViewModel
     [RelayCommand]
     void Login()
     {
-        Shell.Current.GoToAsync("//Home/MedicineSearch");
+        Shell.Current.GoToAsync("//MedicinePrices");
         
     }
 }
