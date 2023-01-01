@@ -6,6 +6,8 @@ public partial class App : Application
 	{
 		InitializeComponent();
 
+
+
 		if (DeviceInfo.Idiom == DeviceIdiom.Phone)
 		{
 			MainPage = new AppShellMobile();

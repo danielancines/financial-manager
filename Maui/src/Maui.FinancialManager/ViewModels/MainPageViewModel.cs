@@ -16,16 +16,13 @@ public partial class MainPageViewModel : ObservableObject, IRecipient<AuthMessag
 
     void InitializeApp()
     {
-        this.MainContent = DependencyContainerHelper.GetService<Views.LoginView>();
+
     }
 
     public void Receive(AuthMessage message)
     {
         if (message.IsAuthenticated)
             this.MainContent = DependencyContainerHelper.GetService<HomeMobile>();
-        else
-            this.MainContent = DependencyContainerHelper.GetService<Views.LoginView>();
-
     }
 
     [ObservableProperty]

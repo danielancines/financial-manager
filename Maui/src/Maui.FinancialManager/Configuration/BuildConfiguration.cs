@@ -28,7 +28,6 @@ public static class BuildConfiguration
         builder.Services.AddTransient<Views.MainPage>();
         builder.Services.AddTransient<Views.LoginPage>();
         builder.Services.AddTransient<HomeMobilePage>();
-        builder.Services.AddTransient<Views.LoginView>();
         builder.Services.AddTransient<HomeMobile>();
         builder.Services.AddTransient<Views.MedicinePricesPage>();
     }
