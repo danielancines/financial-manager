@@ -8,13 +8,13 @@ using Maui.FinancialManager.Searchers.Base;
 
 namespace Maui.FinancialManager.ViewModels;
 
-public partial class MedicinePricesPageViewModel : ObservableObject
+public partial class MedicinePricesViewModel : ObservableObject
 {
     readonly List<IMedicineSearcher> MedicineSearchers = new();
     public OrderedObservableCollection<Medicine> Medicines { get; set; } = new("Price", OrderedPropertyType.Float);
     public string SearchTerm { get; set; }
 
-    public MedicinePricesPageViewModel()
+    public MedicinePricesViewModel()
     {
         var searchers = DependencyContainerHelper.GetServices<IMedicineSearcher>();
         this.MedicineSearchers.AddRange(searchers);

@@ -2,9 +2,9 @@
 
 namespace Maui.FinancialManager.Views;
 
-public partial class LoginPage : ContentPage
+public partial class AccountView : ContentPage
 {
-	public LoginPage(LoginViewModel vm)
+	public AccountView(AccountViewModel vm)
 	{
 		InitializeComponent();
 		this.BindingContext = vm;

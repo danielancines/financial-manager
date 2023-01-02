@@ -24,13 +24,13 @@ public class AuthenticationController
     [AllowAnonymous]
     public async Task<ActionResult<dynamic>> Authenticate(User user)
     {
-        if (user == null || user.Login != "")
+        if (user == null || user.Login != "daniel.ancines@gmail.com")
             return new BadRequestResult();
 
         var token = this._tokenService.GenerateToken(user);
         return new
         {
-            user = "",
+            user = "daniel.ancines@gmail.com",
             token
         };
     }

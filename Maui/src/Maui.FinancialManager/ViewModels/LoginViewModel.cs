@@ -14,6 +14,8 @@ public partial class LoginViewModel : ObservableObject
         this.Initialize();
     }
 
+    public string Version { get; set; } = $"{AppInfo.Current.Name} - {AppInfo.Version}";
+
     [ObservableProperty]
     string userLogin;
 
@@ -23,7 +25,11 @@ public partial class LoginViewModel : ObservableObject
     [RelayCommand]
     async void Login()
     {
-        var client = new HttpClient(new NSUrlSessionHandler());
+
+        _ = Shell.Current.GoToAsync("//Home/MedicineSearch");
+        return;
+
+        var client = new HttpClient();
 
         var data = new
         {

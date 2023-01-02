@@ -6,12 +6,12 @@
     xmlns:views="clr-namespace:Maui.FinancialManager.Views" FlyoutBehavior="Disabled">
 
     <FlyoutItem >
-        <ShellContent Title="Home - Mobile" ContentTemplate="{DataTemplate views:LoginPage}" Route="Login" />
+        <ShellContent Title="Home - Mobile" ContentTemplate="{DataTemplate views:LoginView}" Route="Login" />
     </FlyoutItem>
 
     <TabBar Route="Home">
-        <ShellContent Title="Medicines" Route="MedicineSearch" ContentTemplate="{DataTemplate views:MedicinePricesPage}"/>
-        <ShellContent Title="Account" Route="Account" ContentTemplate="{DataTemplate views:MedicinePricesPage}"/>
+        <ShellContent Title="Medicines" Route="MedicineSearch" ContentTemplate="{DataTemplate views:MedicinePricesView}"/>
+        <ShellContent Title="Account" Route="Account" ContentTemplate="{DataTemplate views:AccountView}"/>
     </TabBar>
 
 </Shell>

@@ -2,11 +2,11 @@
 
 namespace Maui.FinancialManager.Views;
 
-public partial class MedicinePricesPage : ContentPage
+public partial class LoginView : ContentPage
 {
-	public MedicinePricesPage(MedicinePricesPageViewModel vm)
+	public LoginView(LoginViewModel vm)
 	{
 		InitializeComponent();
 		this.BindingContext = vm;
-    }
+	}
 }

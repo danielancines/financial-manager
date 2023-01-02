@@ -1,7 +1,7 @@
 ﻿using Maui.FinancialManager.Searchers;
 using Maui.FinancialManager.Searchers.Base;
 using Maui.FinancialManager.ViewModels;
-using Maui.FinancialManager.Views.Mobile;
+using Maui.FinancialManager.Views;
 
 namespace Maui.FinancialManager.Configuration;
 
@@ -25,18 +25,18 @@ public static class BuildConfiguration
 
     static void ConfigureViews(MauiAppBuilder builder)
     {
-        builder.Services.AddTransient<Views.MainPage>();
-        builder.Services.AddTransient<Views.LoginPage>();
-        builder.Services.AddTransient<HomeMobilePage>();
-        builder.Services.AddTransient<HomeMobile>();
-        builder.Services.AddTransient<Views.MedicinePricesPage>();
+        builder.Services.AddTransient<MainPage>();
+        builder.Services.AddTransient<LoginView>();
+        builder.Services.AddTransient<AccountView>();
+        builder.Services.AddTransient<MedicinePricesView>();
     }
 
     static void ConfigureViewModels(this MauiAppBuilder builder)
     {
         builder.Services.AddTransient<MainPageViewModel>();
         builder.Services.AddTransient<LoginViewModel>();
-        builder.Services.AddTransient<MedicinePricesPageViewModel>();
+        builder.Services.AddTransient<MedicinePricesViewModel>();
+        builder.Services.AddTransient<AccountViewModel>();
     }
 }
 

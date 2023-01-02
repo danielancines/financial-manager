@@ -1,12 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Maui.FinancialManager.Views.Mobile.HomeMobilePage"
-             Title="HomeMobilePage">
+             x:Class="Maui.FinancialManager.Views.AccountView"
+             Title="My Profile">
     <VerticalStackLayout>
-        <Label 
-            Text="Home Mobile"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+        <Image/>
+        <Label Text="My Photo"/>
+        <Button Text="Logout" Command="{Binding LogoutCommand}" VerticalOptions="End"/>
     </VerticalStackLayout>
 </ContentPage>
