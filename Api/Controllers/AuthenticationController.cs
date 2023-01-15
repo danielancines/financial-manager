@@ -1,12 +1,7 @@
-﻿using FinancialManager.Api.Models;
-using FinancialManager.Api.Services;
+﻿using FinancialManager.Api.Services;
+using FinancialManager.Data.Models;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.IdentityModel.Tokens;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
 
 namespace FinancialManager.Api.Controllers;
 
@@ -14,10 +9,13 @@ namespace FinancialManager.Api.Controllers;
 [Route("api/v1/auth")]
 public class AuthenticationController
 {
-    private TokenService _tokenService;
-    public AuthenticationController(TokenService tokenService)
+    private readonly TokenService tokenService;
+    private readonly UserService userService;
+
+    public AuthenticationController(TokenService tokenService, UserService userService)
     {
-        this._tokenService = tokenService;
+        this.tokenService = tokenService;
+        this.userService = userService;
     }
 
     [HttpPost]
@@ -27,10 +25,14 @@ public class AuthenticationController
         if (user == null || user.Login != "daniel.ancines@gmail.com")
             return new BadRequestResult();
 
-        var token = this._tokenService.GenerateToken(user);
+        var resultUser = this.userService.GetUser(user.Login, user.Password);
+        if (resultUser == null)
+            return new BadRequestResult();
+
+        var token = this.tokenService.GenerateToken(user);
         return new
         {
-            user = "daniel.ancines@gmail.com",
+            user = resultUser.Login,
             token
         };
     }

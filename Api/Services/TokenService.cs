@@ -1,4 +1,4 @@
-﻿using FinancialManager.Api.Models;
+﻿using FinancialManager.Data.Models;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;

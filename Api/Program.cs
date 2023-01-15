@@ -9,6 +9,7 @@ builder.Services.AddControllers();
 builder.Services
     .AddEndpointsApiExplorer()
     .AddSwaggerGen()
+    .ConfigureContexts(builder.Configuration["FinancialManagerDbUser"], builder.Configuration["FinancialManagerDbPwd"])
     .ConfigureServices()
     .RegisterServices()
     .RegisterRepositories();

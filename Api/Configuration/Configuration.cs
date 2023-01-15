@@ -1,7 +1,9 @@
-﻿using FinancialManager.Api.Repositories;
-using FinancialManager.Api.Services;
+﻿using FinancialManager.Api.Services;
+using FinancialManager.Data;
+using FinancialManager.Data.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.DataProtection;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
@@ -38,14 +40,25 @@ public static class Configuration
 
     public static IServiceCollection RegisterServices(this IServiceCollection services)
     {
-        services.AddSingleton<TokenService>();
+        services.AddTransient<TokenService>();
+        services.AddTransient<UserService>();
 
         return services;
     }
 
     public static IServiceCollection RegisterRepositories(this IServiceCollection services)
     {
-        services.AddSingleton<ProductRepository>();
+        services.AddTransient<UserRepository>();
+
+        return services;
+    }
+
+    public static IServiceCollection ConfigureContexts(this IServiceCollection services, string user, string dbPwd)
+    {
+        services.AddDbContext<FinancialManagerDbContext>(options =>
+        options
+        .UseLazyLoadingProxies()
+        .UseSqlServer($"Data Source=192.168.0.175,1433;Initial Catalog=PriceBuddyDb;User ID={user};Password={dbPwd};Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"));
 
         return services;
     }
