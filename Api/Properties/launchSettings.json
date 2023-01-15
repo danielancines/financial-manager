@@ -4,7 +4,7 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:18093",
+      "applicationUrl": "http://192.168.0.173:18093",
       "sslPort": 44372
     }
   },
@@ -13,7 +13,7 @@
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "swagger",
-      "applicationUrl": "http://localhost:5095",
+      "applicationUrl": "http://192.168.0.173:5095",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
@@ -22,7 +22,7 @@
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "swagger",
-      "applicationUrl": "https://localhost:7094;http://localhost:5095",
+      "applicationUrl": "https://192.168.0.173:7094;http://192.168.0.173:5095;http://api.danielancines.com:5095",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
