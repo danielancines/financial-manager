@@ -55,6 +55,10 @@ public static class Configuration
 
     public static IServiceCollection ConfigureContexts(this IServiceCollection services, string user, string dbPwd)
     {
+        var envUser = Environment.GetEnvironmentVariable("DbUser");
+        var envPwd = Environment.GetEnvironmentVariable("DbPWd");
+        user = envUser ?? user;
+        dbPwd = envPwd ?? dbPwd;
         services.AddDbContext<FinancialManagerDbContext>(options =>
         options
         .UseLazyLoadingProxies()

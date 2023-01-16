@@ -20,19 +20,20 @@ public class AuthenticationController
 
     [HttpPost]
     [AllowAnonymous]
-    public async Task<ActionResult<dynamic>> Authenticate(User user)
+    public ActionResult<dynamic> Authenticate(User user)
     {
-        if (user == null || user.Login != "daniel.ancines@gmail.com")
-            return new BadRequestResult();
+        if (user == null || user.Login == string.Empty)
+            return new UnauthorizedResult();
 
         var resultUser = this.userService.GetUser(user.Login, user.Password);
         if (resultUser == null)
-            return new BadRequestResult();
+            return new UnauthorizedResult();
 
         var token = this.tokenService.GenerateToken(user);
         return new
         {
             user = resultUser.Login,
+            userName = resultUser.Name,
             token
         };
     }
