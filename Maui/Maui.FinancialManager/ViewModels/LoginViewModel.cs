@@ -26,8 +26,8 @@ public partial class LoginViewModel : ObservableObject
     async void Login()
     {
 
-        _ = Shell.Current.GoToAsync("//Home/MedicineSearch");
-        return;
+        //_ = Shell.Current.GoToAsync("//Home/MedicineSearch");
+        //return;
 
         var client = new HttpClient();
 
@@ -41,15 +41,23 @@ public partial class LoginViewModel : ObservableObject
         var body = new StringContent(JsonConvert.SerializeObject(data),
                                   Encoding.UTF8, "application/json");
 
-        var response = await client.PostAsync("http://localhost:5095/api/v1/auth", body);
-        if (response.IsSuccessStatusCode)
+        try
         {
-            Preferences.Set(nameof(this.UserLogin), this.UserLogin);
-            Preferences.Set(nameof(this.UserPassword), this.UserPassword);
-            _ = Shell.Current.GoToAsync("//Home/MedicineSearch");
-        } else
+            var response = await client.PostAsync("http://api.danielancines.com/api/v1/auth", body);
+            if (response.IsSuccessStatusCode)
+            {
+                Preferences.Set(nameof(this.UserLogin), this.UserLogin);
+                _ = Shell.Current.GoToAsync("//Home/MedicineSearch");
+            }
+            else
+            {
+                _ = Shell.Current.DisplayAlert("Erro", "Usuário e/ou senha inválidos", "Ok");
+            }
+
+        }
+        catch (Exception ex)
         {
-            _= Shell.Current.DisplayAlert("Erro", "Usuário e/ou senha inválidos", "Ok");
+            //TODO Log errors with authentication and send it before to server
         }
     }
 
