@@ -19,14 +19,23 @@ public class DrogaraiaSerializer
 
         foreach (var item in products.EnumerateArray())
         {
+            var hasStock = item.GetProperty("availability").GetProperty("hasStock").GetBoolean();
+            if (!hasStock)
+                continue;
+
             var newMedicine = new Medicine();
 
             newMedicine.Name = item.GetProperty("name").GetString();
 
             if (item.GetProperty("oldPrice").ValueKind != JsonValueKind.Null)
                 newMedicine.OldPrice = (float)item.GetProperty("oldPrice").GetProperty("value").GetDecimal();
-            newMedicine.Price = (float)item.GetProperty("price").GetProperty("value").GetDecimal();
-            newMedicine.PackageQuantity = item.GetProperty("packageQty").GetString();
+
+            if (item.GetProperty("price").ValueKind != JsonValueKind.Null)
+                newMedicine.Price = (float)item.GetProperty("price").GetProperty("value").GetDecimal();
+
+            if (item.GetProperty("packageQty").ValueKind != JsonValueKind.Null)
+                newMedicine.PackageQuantity = item.GetProperty("packageQty").GetString();
+
             newMedicine.DrugStore = "Droga Raia";
             newMedicine.Thumbnail = item.GetProperty("image").GetString();
 
