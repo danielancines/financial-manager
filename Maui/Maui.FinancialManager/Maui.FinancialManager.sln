@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31611.283
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maui.FinancialManager", "Maui.FinancialManager.csproj", "{81DAF0F3-D415-4D21-A536-44FEE9CB2DD0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maui.FinancialManager", "Maui.FinancialManager.csproj", "{81DAF0F3-D415-4D21-A536-44FEE9CB2DD0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maui.FinancialManager.Core", "..\Maui.FinancialManager.Core\Maui.FinancialManager.Core.csproj", "{1F4CD801-B168-4983-866D-786354A27620}"
 EndProject
@@ -29,5 +29,11 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {61F7FB11-1E47-470C-91E2-47F8143E1572}
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		Policies = $0
+		$0.DotNetNamingPolicy = $1
+		$1.DirectoryNamespaceAssociation = PrefixedHierarchical
+		version = 1.0.0
 	EndGlobalSection
 EndGlobal
