@@ -44,9 +44,9 @@
 	</PropertyGroup>
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#FFFFFF" />
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#070F3A" TintColor="#FFFFFF" Size="16,16"/>
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#070F3A" BaseSize="128,128" />
+		<MauiSplashScreen Include="Resources\Splash\splash_white.svg" Color="#070F3A" BaseSize="128,128"/>
 		<!-- Images -->
 		<MauiFont Include="Resources\Fonts\*" />
 		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
