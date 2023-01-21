@@ -30,9 +30,14 @@ public class SaoJoaoSerializer
 
             foreach (var promotion in item.GetProperty("promocoes").EnumerateArray())
             {
-                newMedicine.OldPrice = (float)promotion.GetProperty("valueFrom").GetDecimal();
-                newMedicine.Price = (float)promotion.GetProperty("valueTo").GetDecimal();
-                newMedicine.ExpireDate = promotion.GetProperty("dtFinal").GetDateTime();
+                if (promotion.TryGetProperty("valueFrom", out var valueFrom) && valueFrom.ValueKind != JsonValueKind.Null)
+                    newMedicine.OldPrice = (float)valueFrom.GetDecimal();
+
+                if (promotion.TryGetProperty("valueTo", out var valueTo) && valueFrom.ValueKind != JsonValueKind.Null)
+                    newMedicine.Price = (float)valueFrom.GetDecimal();
+
+                if (promotion.TryGetProperty("dtFinal", out var dtFinal) && valueFrom.ValueKind != JsonValueKind.Null)
+                    newMedicine.ExpireDate = dtFinal.GetDateTime();
             }
 
             newMedicine.Name = item.GetProperty("nomeProduto").GetString();

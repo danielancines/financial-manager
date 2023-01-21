@@ -23,17 +23,27 @@ public partial class MedicinePricesViewModel : ObservableObject
     public string FooterAppInfo { get; } = $"{AppInfo.Current.Name} - {AppInfo.Version}";
 
     [ObservableProperty]
-    private bool loadingData;
+    bool loadingData;
+    [ObservableProperty]
+    Medicine selectedMedicine;
 
-    [RelayCommand]
-    private void SelectionMedicine(Medicine medicine)
+    partial void OnSelectedMedicineChanged(Medicine value)
     {
-        //var shellNavigation = new ShellNavigationState("medicinedetail");
-        _ = Shell.Current.GoToAsync("medicinedetail", new Dictionary<string, object> { { "medicine", medicine } });
+        if (value == null)
+            return;
+
+        _ = Shell.Current.GoToAsync("medicinedetail", new Dictionary<string, object> { { "medicine", value } });
+        this.SelectedMedicine = null;
     }
 
     [RelayCommand]
-    private async void Search()
+    void OpenMedicineDetails()
+    {
+
+    }
+
+    [RelayCommand]
+    async void Search()
     {
         this.Medicines.Clear();
 
@@ -48,7 +58,7 @@ public partial class MedicinePricesViewModel : ObservableObject
         this.LoadingData = false;
     }
 
-    private async Task Search(IMedicineSearcher searcher)
+    async Task Search(IMedicineSearcher searcher)
     {
         var medicines = await searcher.SearchAsync(this.SearchTerm);
         foreach (var medicine in medicines)

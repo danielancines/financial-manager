@@ -2,7 +2,27 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Maui.FinancialManager.Views.MedicinePricesView"
+             xmlns:viewModels="clr-namespace:Maui.FinancialManager.ViewModels"
+             xmlns:models="clr-namespace:Maui.FinancialManager.Models"
+             x:DataType="viewModels:MedicinePricesViewModel"
              Title="Medicine Search">
+    <ContentPage.Resources>
+        <Style TargetType="Grid">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="Selected">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor"
+                                        Value="#46182257" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+    </ContentPage.Resources>
     <Grid RowDefinitions="Auto, Auto, *, Auto" Margin="15">
         <Border StrokeShape="RoundRectangle 4" >
             <Grid ColumnDefinitions="*, Auto" Margin="5">
@@ -15,11 +35,9 @@
         <Label HorizontalOptions="Center" Text="Resultados Encontrados" Grid.Row="1" Grid.ColumnSpan="2" Margin="0,10,0,0"/>
         <Border StrokeThickness="1" StrokeShape="RoundRectangle 4" Grid.Row="2" Grid.ColumnSpan="2">
             <CollectionView x:Name="MedicinesList" ItemsSource="{Binding Medicines}" SelectionMode="Single"
-                            VerticalScrollBarVisibility="Always" Margin="5"
-                            SelectionChangedCommand="{Binding SelectionMedicineCommand}"
-                            SelectionChangedCommandParameter="{Binding SelectedItem, Source={x:Reference MedicinesList}}">
+                            VerticalScrollBarVisibility="Always" Margin="5" SelectedItem="{Binding SelectedMedicine}">
                 <CollectionView.ItemTemplate>
-                    <DataTemplate>
+                    <DataTemplate x:DataType="models:Medicine">
                         <Grid RowDefinitions="Auto, Auto, Auto" ColumnDefinitions="Auto, Auto, Auto" Margin="5">
                             <Image Source="{Binding Thumbnail}" Grid.RowSpan="3" WidthRequest="64" HeightRequest="64" Margin="0,0,15,0"/>
                             <Label Text="{Binding Name}" Grid.Column="1" Grid.ColumnSpan="2" FontSize="16" LineBreakMode="TailTruncation"/>
