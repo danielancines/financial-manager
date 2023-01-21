@@ -47,7 +47,7 @@ public partial class LoginViewModel : ObservableObject
             if (response.IsSuccessStatusCode)
             {
                 Preferences.Set(nameof(this.UserLogin), this.UserLogin);
-                _ = Shell.Current.GoToAsync("//Home/MedicineSearch");
+                _ = Shell.Current.GoToAsync("//medicinesearch");
             }
             else
             {

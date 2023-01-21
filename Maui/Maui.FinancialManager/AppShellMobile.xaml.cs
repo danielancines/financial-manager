@@ -4,14 +4,15 @@ namespace Maui.FinancialManager;
 
 public partial class AppShellMobile : Shell
 {
-	public AppShellMobile()
-	{
-		InitializeComponent();
-		InitializeRoutes();
-	}
+    public AppShellMobile()
+    {
+        InitializeComponent();
+        InitializeRoutes();
+    }
 
     void InitializeRoutes()
     {
-		Routing.RegisterRoute("login", typeof(LoginView));
+        Routing.RegisterRoute("login", typeof(LoginView));
+        Routing.RegisterRoute("medicinesearch/medicinedetail", typeof(MedicineDetailsView));
     }
 }

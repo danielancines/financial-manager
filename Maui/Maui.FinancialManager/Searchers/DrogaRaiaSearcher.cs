@@ -30,7 +30,9 @@ public class DrogaRaiaSearcher : IMedicineSearcher
                     products {
                         name,
                         image,
+                        gallery,
                         packageQty,
+                        description,
                         availability {
                             hasStock
                         },

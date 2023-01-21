@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModel="clr-namespace:Maui.FinancialManager.ViewModels"
+             x:DataType="viewModel:MedicineDetailsViewModel"
+             x:Class="Maui.FinancialManager.Views.MedicineDetailsView">
+    <ScrollView>
+        <Grid RowDefinitions="auto,auto,*">
+            <Label Text="{Binding Medicine.Name}" Margin="0,0,0,50" FontAttributes="Bold" FontSize="18"/>
+            <Label Text="{Binding Medicine.Description}" Grid.Row="1" TextType="Html" BackgroundColor="White" TextColor="White"/>
+            <CarouselView ItemsSource="{Binding Medicine.Images}" Grid.Row="2">
+                <CarouselView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Horizontal" />
+                </CarouselView.ItemsLayout>
+                <CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <Image Source="{Binding .}"/>
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+        </Grid>
+    </ScrollView>
+</ContentPage>
+

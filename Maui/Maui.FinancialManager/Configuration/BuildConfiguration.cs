@@ -29,6 +29,7 @@ public static class BuildConfiguration
         builder.Services.AddTransient<LoginView>();
         builder.Services.AddTransient<AccountView>();
         builder.Services.AddTransient<MedicinePricesView>();
+        builder.Services.AddTransient<MedicineDetailsView>();
     }
 
     static void ConfigureViewModels(this MauiAppBuilder builder)
@@ -37,6 +38,7 @@ public static class BuildConfiguration
         builder.Services.AddTransient<LoginViewModel>();
         builder.Services.AddTransient<MedicinePricesViewModel>();
         builder.Services.AddTransient<AccountViewModel>();
+        builder.Services.AddTransient<MedicineDetailsViewModel>();
     }
 }
 

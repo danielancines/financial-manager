@@ -26,6 +26,13 @@ public partial class MedicinePricesViewModel : ObservableObject
     private bool loadingData;
 
     [RelayCommand]
+    private void SelectionMedicine(Medicine medicine)
+    {
+        //var shellNavigation = new ShellNavigationState("medicinedetail");
+        _ = Shell.Current.GoToAsync("medicinedetail", new Dictionary<string, object> { { "medicine", medicine } });
+    }
+
+    [RelayCommand]
     private async void Search()
     {
         this.Medicines.Clear();

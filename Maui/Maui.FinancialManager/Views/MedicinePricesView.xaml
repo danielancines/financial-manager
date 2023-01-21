@@ -14,7 +14,10 @@
 
         <Label HorizontalOptions="Center" Text="Resultados Encontrados" Grid.Row="1" Grid.ColumnSpan="2" Margin="0,10,0,0"/>
         <Border StrokeThickness="1" StrokeShape="RoundRectangle 4" Grid.Row="2" Grid.ColumnSpan="2">
-            <CollectionView ItemsSource="{Binding Medicines}" SelectionMode="Single" VerticalScrollBarVisibility="Always" Margin="5">
+            <CollectionView x:Name="MedicinesList" ItemsSource="{Binding Medicines}" SelectionMode="Single"
+                            VerticalScrollBarVisibility="Always" Margin="5"
+                            SelectionChangedCommand="{Binding SelectionMedicineCommand}"
+                            SelectionChangedCommandParameter="{Binding SelectedItem, Source={x:Reference MedicinesList}}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Grid RowDefinitions="Auto, Auto, Auto" ColumnDefinitions="Auto, Auto, Auto" Margin="5">

@@ -33,8 +33,17 @@ public class DrogaraiaSerializer
             if (item.GetProperty("price").ValueKind != JsonValueKind.Null)
                 newMedicine.Price = (float)item.GetProperty("price").GetProperty("value").GetDecimal();
 
+            //newMedicine.PackageQuantity = item.GetProperty("packageQty").Value<string>();
+
             if (item.GetProperty("packageQty").ValueKind != JsonValueKind.Null)
                 newMedicine.PackageQuantity = item.GetProperty("packageQty").GetString();
+
+            if (item.GetProperty("description").ValueKind != JsonValueKind.Null)
+                newMedicine.Description = item.GetProperty("description").GetString();
+
+            if (item.GetProperty("gallery").ValueKind != JsonValueKind.Null)
+                foreach (var image in item.GetProperty("gallery").EnumerateArray())
+                    newMedicine.Images.Add(image.GetString());
 
             newMedicine.DrugStore = "Droga Raia";
             newMedicine.Thumbnail = item.GetProperty("image").GetString();
@@ -43,6 +52,25 @@ public class DrogaraiaSerializer
         }
 
         return medicines;
+    }
+}
+
+public static class SerializerExtensions
+{
+    public static T Value<T>(this JsonElement element)
+    {
+        if (element.ValueKind == JsonValueKind.Null)
+            return default(T);
+
+        try
+        {
+            return element.Value<T>();
+        }
+        catch (Exception ex)
+        {
+            return default(T);
+        }
+
     }
 }
 

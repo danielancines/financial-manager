@@ -9,11 +9,15 @@ public class Medicine
 
     public ImageSource Thumbnail { get; set; }
 
+    public List<ImageSource> Images { get; private set; } = new List<ImageSource>();
+
     public string DrugStore { get; set; }
 
     public float OldPrice { get; set; }
 
     public string PackageQuantity { get; set; }
+
+    public string Description { get; set; }
 
     public DateTime ExpireDate { get; set; }
 

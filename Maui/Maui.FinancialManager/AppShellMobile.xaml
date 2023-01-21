@@ -10,7 +10,7 @@
     </FlyoutItem>
 
     <TabBar Route="Home">
-        <ShellContent Title="Medicines" Route="MedicineSearch" ContentTemplate="{DataTemplate views:MedicinePricesView}"/>
+        <ShellContent Title="Medicines" Route="medicinesearch" ContentTemplate="{DataTemplate views:MedicinePricesView}"/>
         <ShellContent Title="Account" Route="Account" ContentTemplate="{DataTemplate views:AccountView}"/>
     </TabBar>
 
