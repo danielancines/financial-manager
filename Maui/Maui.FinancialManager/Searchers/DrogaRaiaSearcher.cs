@@ -10,6 +10,12 @@ namespace Maui.FinancialManager.Searchers;
 public class DrogaRaiaSearcher : IMedicineSearcher
 {
     const string URL = @"https://app-api-m2-prod.drogaraia.com.br/graphql";
+    readonly DrogaraiaSerializer serializer;
+
+    public DrogaRaiaSearcher(DrogaraiaSerializer serializer)
+    {
+        this.serializer = serializer;
+    }
 
     public async Task<IEnumerable<Medicine>> SearchAsync(string searchTerm)
     {
@@ -50,7 +56,7 @@ public class DrogaRaiaSearcher : IMedicineSearcher
         var graphQLResponse = await graphQLClient.SendQueryAsync<dynamic>(request);
         if (graphQLResponse.Data != null)
         {
-            return DrogaraiaSerializer.Deserialize(graphQLResponse.Data.ToString());
+            return serializer.Deserialize(graphQLResponse.Data.ToString());
         }
         else
         {

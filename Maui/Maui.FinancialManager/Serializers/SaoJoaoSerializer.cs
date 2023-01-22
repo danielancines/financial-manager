@@ -1,48 +1,42 @@
 ﻿using System.Text.Json;
+using Maui.FinancialManager.Extensions;
 using Maui.FinancialManager.Models;
+using Maui.FinancialManager.Primitives;
+using Maui.FinancialManager.Serializers.Base;
 
 namespace Maui.FinancialManager.Serializers;
 
-public class SaoJoaoSerializer
+public class SaoJoaoSerializer : BaseSerializer<Medicine>
 {
-    public static List<Medicine> Deserialize(string rawResult)
+    public override IList<Medicine> GetItems(JsonElement rootElement)
     {
         var medicines = new List<Medicine>();
 
-        JsonElement data;
-        if (!JsonSerializer.Deserialize<JsonElement>(rawResult).TryGetProperty("data", out data))
-            return medicines;
-
-        if (data.ValueKind != JsonValueKind.Array)
-            return medicines;
-
-        foreach (var item in data.EnumerateArray())
+        foreach (var item in rootElement.Value<JsonElement.ArrayEnumerator>("data", JsonValueTypes.Array))
         {
             var newMedicine = new Medicine();
-            foreach (var image in item.GetProperty("imagens").EnumerateArray())
+            foreach (var image in item.Value<JsonElement.ArrayEnumerator>("imagens", JsonValueTypes.Array))
                 newMedicine.Thumbnail = image.GetString();
 
-            newMedicine.Price = (float)item.GetProperty("precoDe").GetDecimal();
+            newMedicine.Price = item.Value<float>("precoDe", JsonValueTypes.Decimal);
 
-            JsonElement priceFor = item.GetProperty("precoPor");
-            if (priceFor.ValueKind != JsonValueKind.Null)
-                newMedicine.Price = (float)priceFor.GetDecimal();
+            var newPrice = item.Value<float>("precoPor", JsonValueTypes.Decimal);
+            if (newPrice > 0)
+                newMedicine.Price = newPrice;
 
             foreach (var promotion in item.GetProperty("promocoes").EnumerateArray())
             {
-                if (promotion.TryGetProperty("valueFrom", out var valueFrom) && valueFrom.ValueKind != JsonValueKind.Null)
-                    newMedicine.OldPrice = (float)valueFrom.GetDecimal();
+                newMedicine.OldPrice = promotion.Value<float>("valueFrom", JsonValueTypes.Decimal);
 
-                if (promotion.TryGetProperty("valueTo", out var valueTo) && valueFrom.ValueKind != JsonValueKind.Null)
-                    newMedicine.Price = (float)valueFrom.GetDecimal();
+                newPrice = promotion.Value<float>("valueTo", JsonValueTypes.Decimal);
+                if (newPrice > 0)
+                    newMedicine.Price = newPrice;
 
-                if (promotion.TryGetProperty("dtFinal", out var dtFinal) && valueFrom.ValueKind != JsonValueKind.Null)
-                    newMedicine.ExpireDate = dtFinal.GetDateTime();
+                newMedicine.ExpireDate = promotion.Value<DateTime>("dtFinal", JsonValueTypes.DateTime);
             }
 
-            newMedicine.Name = item.GetProperty("nomeProduto").GetString();
+            newMedicine.Name = item.Value<string>("nomeProduto", JsonValueTypes.String);
             newMedicine.DrugStore = "São João";
-
             medicines.Add(newMedicine);
         }
 

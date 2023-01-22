@@ -7,7 +7,12 @@ namespace Maui.FinancialManager.Searchers;
 public class PanvelSearcher : IMedicineSearcher
 {
     readonly string URL = "https://app.grupodimedservices.com.br/prod/app-bff-panvel/v1/search/autocomplete?searchTerm={0}";
+    readonly PanvelSerializer serializer;
 
+    public PanvelSearcher(PanvelSerializer serializer)
+    {
+        this.serializer = serializer;
+    }
 
     public async Task<IEnumerable<Medicine>> SearchAsync(string searchTerm)
     {
@@ -17,7 +22,7 @@ public class PanvelSearcher : IMedicineSearcher
 
         if (response.IsSuccessStatusCode)
         {
-            return PanvelSerializer.Deserialize(await response.Content.ReadAsStringAsync());
+            return serializer.Deserialize(await response.Content.ReadAsStringAsync());
         }
         else
         {

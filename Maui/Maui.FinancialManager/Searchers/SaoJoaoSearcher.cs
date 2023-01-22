@@ -7,6 +7,12 @@ namespace Maui.FinancialManager.Searchers;
 public class SaoJoaoSearcher : IMedicineSearcher
 {
     const string URL = @"https://apiappprd.saojoaofarmacias.com.br/api/v2/products/linx?terms={0}";
+    readonly SaoJoaoSerializer serializer;
+
+    public SaoJoaoSearcher(SaoJoaoSerializer serializer)
+    {
+        this.serializer = serializer;
+    }
 
     public async Task<IEnumerable<Medicine>> SearchAsync(string searchTerm)
     {
@@ -15,8 +21,7 @@ public class SaoJoaoSearcher : IMedicineSearcher
 
         if (response.IsSuccessStatusCode)
         {
-            return SaoJoaoSerializer.Deserialize(await response.Content.ReadAsStringAsync());
-
+            return serializer.Deserialize(await response.Content.ReadAsStringAsync());
         }
         else
         {

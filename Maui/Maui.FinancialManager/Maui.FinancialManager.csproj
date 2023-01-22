@@ -16,7 +16,7 @@
 		<ApplicationId>com.companyname.maui.financialmanager</ApplicationId>
 		<ApplicationIdGuid>0ed32af2-c764-4834-9df9-a815977834b8</ApplicationIdGuid>
 		<!-- Versions -->
-		<ApplicationDisplayVersion>1.0.0</ApplicationDisplayVersion>
+		<ApplicationDisplayVersion>1.1.0</ApplicationDisplayVersion>
 		<ApplicationVersion>1</ApplicationVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">14.2</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">13.1</SupportedOSPlatformVersion>
@@ -86,6 +86,9 @@
 		<None Remove="Resources\Images\pig_icon.svg" />
 		<None Remove="Resources\Icons\" />
 		<None Remove="Resources\Icons\pig_icon.svg" />
+		<None Remove="Extensions\" />
+		<None Remove="Primitives\" />
+		<None Remove="Serializers\Base\" />
 	</ItemGroup>
 	<ItemGroup>
 		<Folder Include="Views\" />
@@ -98,6 +101,9 @@
 		<Folder Include="Helpers\" />
 		<Folder Include="Messages\" />
 		<Folder Include="Resources\Icons\" />
+		<Folder Include="Extensions\" />
+		<Folder Include="Primitives\" />
+		<Folder Include="Serializers\Base\" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\Maui.FinancialManager.Core\Maui.FinancialManager.Core.csproj" />

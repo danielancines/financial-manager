@@ -1,52 +1,49 @@
 ﻿using System.Text.Json;
 using Maui.FinancialManager.Models;
+using Maui.FinancialManager.Extensions;
+using Maui.FinancialManager.Primitives;
+using Maui.FinancialManager.Serializers.Base;
 
 namespace Maui.FinancialManager.Serializers;
 
-public class DrogaraiaSerializer
+public class DrogaraiaSerializer : BaseSerializer<Medicine>
 {
-    public static List<Medicine> Deserialize(string rawResult)
+    public override IList<Medicine> GetItems(JsonElement rootElement)
     {
         var medicines = new List<Medicine>();
 
-        JsonElement search;
-        if (!JsonSerializer.Deserialize<JsonElement>(rawResult).TryGetProperty("search", out search))
+        var search = rootElement.Value<JsonElement>("search", JsonValueTypes.JsonElement);
+        if (search.ValueKind == JsonValueKind.Null)
             return medicines;
 
-        JsonElement products;
-        if (!search.TryGetProperty("products", out products))
-            return medicines;
-
-        foreach (var item in products.EnumerateArray())
+        foreach (var item in search.Value<JsonElement.ArrayEnumerator>("products", JsonValueTypes.Array))
         {
-            var hasStock = item.GetProperty("availability").GetProperty("hasStock").GetBoolean();
+
+            var hasStock = item.Value<JsonElement>("availability", JsonValueTypes.JsonElement).Value<bool>("hasStock", JsonValueTypes.Boolean);
             if (!hasStock)
                 continue;
 
             var newMedicine = new Medicine();
 
-            newMedicine.Name = item.GetProperty("name").GetString();
+            newMedicine.Name = item.Value<string>("name", JsonValueTypes.String);
 
             if (item.GetProperty("oldPrice").ValueKind != JsonValueKind.Null)
-                newMedicine.OldPrice = (float)item.GetProperty("oldPrice").GetProperty("value").GetDecimal();
+                newMedicine.OldPrice = item.Value<JsonElement>("oldPrice", JsonValueTypes.JsonElement).Value<float>("value", JsonValueTypes.Decimal);
 
             if (item.GetProperty("price").ValueKind != JsonValueKind.Null)
-                newMedicine.Price = (float)item.GetProperty("price").GetProperty("value").GetDecimal();
-
-            //newMedicine.PackageQuantity = item.GetProperty("packageQty").Value<string>();
+                newMedicine.Price = item.Value<JsonElement>("price", JsonValueTypes.JsonElement).Value<float>("value", JsonValueTypes.Decimal);
 
             if (item.GetProperty("packageQty").ValueKind != JsonValueKind.Null)
-                newMedicine.PackageQuantity = item.GetProperty("packageQty").GetString();
+                newMedicine.PackageQuantity = item.Value<string>("packageQty", JsonValueTypes.String);
 
             if (item.GetProperty("description").ValueKind != JsonValueKind.Null)
-                newMedicine.Description = item.GetProperty("description").GetString();
+                newMedicine.Description = item.Value<string>("description", JsonValueTypes.String);
 
-            if (item.GetProperty("gallery").ValueKind != JsonValueKind.Null)
-                foreach (var image in item.GetProperty("gallery").EnumerateArray())
-                    newMedicine.Images.Add(image.GetString());
+            foreach (var image in item.Value<JsonElement.ArrayEnumerator>("gallery", JsonValueTypes.Array))
+                newMedicine.Images.Add(image.GetString());
 
             newMedicine.DrugStore = "Droga Raia";
-            newMedicine.Thumbnail = item.GetProperty("image").GetString();
+            newMedicine.Thumbnail = item.Value<string>("image", JsonValueTypes.String);
 
             medicines.Add(newMedicine);
         }
@@ -54,23 +51,3 @@ public class DrogaraiaSerializer
         return medicines;
     }
 }
-
-public static class SerializerExtensions
-{
-    public static T Value<T>(this JsonElement element)
-    {
-        if (element.ValueKind == JsonValueKind.Null)
-            return default(T);
-
-        try
-        {
-            return element.Value<T>();
-        }
-        catch (Exception ex)
-        {
-            return default(T);
-        }
-
-    }
-}
-
