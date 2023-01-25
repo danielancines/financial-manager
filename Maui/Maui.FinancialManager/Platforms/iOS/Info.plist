@@ -35,5 +35,7 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>This app uses barcode scanning to Financial Buddy</string>
 </dict>
 </plist>

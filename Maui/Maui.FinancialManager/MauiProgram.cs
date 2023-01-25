@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Maui;
 using Maui.FinancialManager.Configuration;
 using Microsoft.Extensions.Logging;
+using ZXing.Net.Maui;
 
 namespace Maui.FinancialManager;
 
@@ -13,7 +14,8 @@ public static class MauiProgram
 			.UseMauiApp<App>()
 			.UseMauiCommunityToolkit()
 			.ConfigureApp()
-			.ConfigureFonts(fonts =>
+            .UseBarcodeReader()
+            .ConfigureFonts(fonts =>
 			{
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
