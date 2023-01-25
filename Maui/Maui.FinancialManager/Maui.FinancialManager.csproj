@@ -63,6 +63,7 @@
 		<PackageReference Include="GraphQL.Client" Version="5.1.0" />
 		<PackageReference Include="GraphQL.Client.Serializer.Newtonsoft" Version="5.1.0" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+		<PackageReference Include="ZXing.Net.Maui.Jgdev" Version="1.0.5" />
 	</ItemGroup>
 	<ItemGroup>
 		<None Remove="Views\" />
@@ -89,6 +90,7 @@
 		<None Remove="Extensions\" />
 		<None Remove="Primitives\" />
 		<None Remove="Serializers\Base\" />
+		<None Remove="ZXing.Net.Maui.Jgdev" />
 	</ItemGroup>
 	<ItemGroup>
 		<Folder Include="Views\" />
@@ -145,6 +147,9 @@
 		<MauiXaml Update="Views\AccountView.xaml">
 			<SubType>
 			</SubType>
+		</MauiXaml>
+		<MauiXaml Update="Views\ProductsPricesView.xaml">
+		  <SubType></SubType>
 		</MauiXaml>
 	</ItemGroup>
 	<ItemGroup>
