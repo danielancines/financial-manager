@@ -8,12 +8,13 @@ public partial class ProductsPricesView : ContentPage
     public ProductsPricesView()
     {
         InitializeComponent();
-        cameraBarcodeReaderView.Options = new BarcodeReaderOptions
-        {
-            Formats = BarcodeFormats.OneDimensional,
-            AutoRotate = true,
-            Multiple = false
-        };
+        //cameraBarcodeReaderView.Options = new BarcodeReaderOptions
+        //{
+        //    Formats = BarcodeFormats.OneDimensional,
+        //    AutoRotate = false,
+        //    Multiple = false,
+        //    TryHarder = true
+        //};
     }
 
     void cameraBarcodeReaderView_BarcodesDetected(System.Object sender, ZXing.Net.Maui.BarcodeDetectionEventArgs e)

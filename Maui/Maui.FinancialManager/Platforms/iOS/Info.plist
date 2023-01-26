@@ -37,5 +37,7 @@
 	</dict>
 	<key>NSCameraUsageDescription</key>
 	<string>This app uses barcode scanning to Financial Buddy</string>
+	<key>NSFaceIDUsageDescription</key>
+	<string>Financial Buddy wants to use Faceid to unlock the app</string>
 </dict>
 </plist>

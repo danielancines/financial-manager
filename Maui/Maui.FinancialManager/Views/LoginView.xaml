@@ -6,7 +6,7 @@
 
     <Grid RowDefinitions="*, Auto">
         <VerticalStackLayout Padding="15">
-            <Image Source="pig_icon.png" WidthRequest="80" HeightRequest="80" Margin="0,80,0,20"/>
+            <Image Source="pig_icon.png" WidthRequest="80" HeightRequest="80" Margin="0,60,0,20"/>
             <Label Text="Welcome Back!" FontSize="Title" HorizontalOptions="Center"/>
             <Label Text="Login to your account" FontSize="Small" HorizontalOptions="Center" Margin="0,0,0,50"/>
 
@@ -36,7 +36,14 @@
                         Opacity="0.8" />
                 </Button.Shadow>
             </Button>
-
+            <ImageButton Source="faceid.png" IsVisible="{Binding HasBiometricAuthentication}" Command="{Binding LoginByFaceIdCommand}" CornerRadius="10" WidthRequest="70" Margin="0,30,0,0">
+                <ImageButton.Shadow>
+                    <Shadow Brush="Black"
+                        Offset="20,20"
+                        Radius="30"
+                        Opacity="0.8" />
+                </ImageButton.Shadow>
+            </ImageButton>
         </VerticalStackLayout>
         <Label Text="{Binding Version}" Grid.Row="1" HorizontalOptions="Center" FontSize="Micro"/>
     </Grid>

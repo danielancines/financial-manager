@@ -4,6 +4,8 @@ using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
 using Maui.FinancialManager.Messages;
 using Newtonsoft.Json;
+using Plugin.Fingerprint;
+using Plugin.Fingerprint.Abstractions;
 
 namespace Maui.FinancialManager.ViewModels;
 
@@ -20,17 +22,15 @@ public partial class LoginViewModel : ObservableObject
     string userLogin;
 
     [ObservableProperty]
+    bool hasBiometricAuthentication;
+
+    [ObservableProperty]
     string userPassword;
 
     [RelayCommand]
     async void Login()
     {
-
-        //_ = Shell.Current.GoToAsync("//Home/MedicineSearch");
-        //return;
-
         var client = new HttpClient();
-
         var data = new
         {
             login = this.UserLogin,
@@ -47,6 +47,8 @@ public partial class LoginViewModel : ObservableObject
             if (response.IsSuccessStatusCode)
             {
                 Preferences.Set(nameof(this.UserLogin), this.UserLogin);
+                Preferences.Set(nameof(this.UserPassword), this.UserPassword);
+                this.UserPassword = null;
                 _ = Shell.Current.GoToAsync("//medicinesearch");
             }
             else
@@ -61,10 +63,35 @@ public partial class LoginViewModel : ObservableObject
         }
     }
 
-    void Initialize()
+    [RelayCommand]
+    async void LoginByFaceId()
+    {
+        var dialogConfig = new AuthenticationRequestConfiguration("My App", "Authenticate by faceid")
+        {
+            CancelTitle = "Cancelar",
+            FallbackTitle = "Voltar",
+            AllowAlternativeAuthentication = true,
+            ConfirmationRequired = true
+        };
+
+        var authResult = await CrossFingerprint.Current.AuthenticateAsync(dialogConfig);
+        if (authResult.Authenticated)
+        {
+            this.UserPassword = Preferences.Get(nameof(this.UserPassword), string.Empty);
+            this.LoginCommand.Execute(null);
+        }
+    }
+
+    async void Initialize()
     {
         if (Preferences.ContainsKey(nameof(this.UserLogin)))
             this.UserLogin = Preferences.Get(nameof(this.UserLogin), string.Empty);
+
+        var hasBiometric = await CrossFingerprint.Current.GetAvailabilityAsync();
+        this.HasBiometricAuthentication = hasBiometric == FingerprintAvailability.Available;
+
+        if (this.HasBiometricAuthentication)
+            this.LoginByFaceIdCommand.Execute(null);
     }
 }
 

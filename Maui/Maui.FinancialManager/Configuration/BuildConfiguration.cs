@@ -3,6 +3,7 @@ using Maui.FinancialManager.Searchers.Base;
 using Maui.FinancialManager.ViewModels;
 using Maui.FinancialManager.Views;
 using Maui.FinancialManager.Serializers;
+using Plugin.Fingerprint.Abstractions;
 
 namespace Maui.FinancialManager.Configuration;
 
@@ -14,6 +15,7 @@ public static class BuildConfiguration
         ConfigureViews(builder);
         ConfigureSearchers(builder);
         ConfigureSerializers(builder);
+        ConfigureSecurity(builder);
 
         return builder;
     }
@@ -32,6 +34,7 @@ public static class BuildConfiguration
         builder.Services.AddTransient<AccountView>();
         builder.Services.AddTransient<MedicinePricesView>();
         builder.Services.AddTransient<MedicineDetailsView>();
+        builder.Services.AddTransient<ProductsPricesView>();
     }
 
     static void ConfigureViewModels(this MauiAppBuilder builder)
@@ -48,6 +51,11 @@ public static class BuildConfiguration
         builder.Services.AddTransient<DrogaraiaSerializer>();
         builder.Services.AddTransient<PanvelSerializer>();
         builder.Services.AddTransient<SaoJoaoSerializer>();
+    }
+
+    static void ConfigureSecurity(MauiAppBuilder builder)
+    {
+        
     }
 }
 
