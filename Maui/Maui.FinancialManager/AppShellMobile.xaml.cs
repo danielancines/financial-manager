@@ -8,6 +8,8 @@ public partial class AppShellMobile : Shell
     {
         InitializeComponent();
         InitializeRoutes();
+
+        Application.Current.UserAppTheme = AppTheme.Dark;
     }
 
     void InitializeRoutes()

@@ -13,11 +13,11 @@
 		<!-- Display name -->
 		<ApplicationTitle>Financial Buddy</ApplicationTitle>
 		<!-- App Identifier -->
-		<ApplicationId>com.companyname.maui.financialmanager</ApplicationId>
+		<ApplicationId>com.danielancines.financialbuddy</ApplicationId>
 		<ApplicationIdGuid>0ed32af2-c764-4834-9df9-a815977834b8</ApplicationIdGuid>
 		<!-- Versions -->
-		<ApplicationDisplayVersion>1.1.0</ApplicationDisplayVersion>
-		<ApplicationVersion>1</ApplicationVersion>
+		<ApplicationDisplayVersion>1.0.1</ApplicationDisplayVersion>
+		<ApplicationVersion>2</ApplicationVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">14.2</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">13.1</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
@@ -34,14 +34,20 @@
 		<AppInstallerUri>C:\Users\danie\Documents\code</AppInstallerUri>
 		<HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
 		<ReleaseVersion>1.0.0</ReleaseVersion>
-	</PropertyGroup>
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-ios|AnyCPU'">
-		<CreatePackage>false</CreatePackage>
-		<CodesignKey>Apple Development: daniel.ancines@gmail.com (U43HBYH4S9)</CodesignKey>
-		<CodesignProvision>Automatic</CodesignProvision>
+		<AssemblyName>Maui.FinancialManager</AssemblyName>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-ios|AnyCPU'">
+		<RuntimeIdentifier>ios-arm64</RuntimeIdentifier>
 		<CreatePackage>false</CreatePackage>
+		<CodesignProvision>FinancialBuddyApp</CodesignProvision>
+		<CodesignEntitlements>Platforms\iOS\Entitlements.plist</CodesignEntitlements>
+		<CodesignKey>iPhone Distribution</CodesignKey>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-ios|AnyCPU'">
+	  <CreatePackage>false</CreatePackage>
+	  <CodesignProvision>Financial Buddy Provisioning Profile</CodesignProvision>
+	  <CodesignKey>iPhone Developer</CodesignKey>
+	  <CodesignEntitlements>Platforms\iOS\Entitlements.plist</CodesignEntitlements>
 	</PropertyGroup>
 	<ItemGroup>
 		<!-- App Icon -->
@@ -152,11 +158,12 @@
 			</SubType>
 		</MauiXaml>
 		<MauiXaml Update="Views\ProductsPricesView.xaml">
-		  <SubType></SubType>
+			<SubType>
+			</SubType>
 		</MauiXaml>
 	</ItemGroup>
 	<ItemGroup>
-	  <MauiImage Remove="Resources\AppIcon\appicon.svg" />
+		<MauiImage Remove="Resources\AppIcon\appicon.svg" />
 	</ItemGroup>
 	<ItemGroup>
 		<MauiImage Include="Resources\Images\dotnet_bot.svg" />

@@ -28,8 +28,6 @@
 	</array>
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/appicon.appiconset</string>
-	<key>CFBundleIdentifier</key>
-	<string>CD-Global.Maui-FinancialManager</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
@@ -39,5 +37,7 @@
 	<string>This app uses barcode scanning to Financial Buddy</string>
 	<key>NSFaceIDUsageDescription</key>
 	<string>Financial Buddy wants to use Faceid to unlock the app</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.danielancines.financialbuddy</string>
 </dict>
 </plist>
