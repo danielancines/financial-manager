@@ -38,6 +38,6 @@
 	<key>NSFaceIDUsageDescription</key>
 	<string>Financial Buddy wants to use Faceid to unlock the app</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.danielancines.financialbuddy</string>
+	<string>com.danielancines.financialbuddyapp</string>
 </dict>
 </plist>

@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31611.283
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maui.FinancialManager", "Maui.FinancialManager\Maui.FinancialManager.csproj", "{81DAF0F3-D415-4D21-A536-44FEE9CB2DD0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Financial Buddy", "Maui.FinancialManager\Financial Buddy.csproj", "{81DAF0F3-D415-4D21-A536-44FEE9CB2DD0}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maui.FinancialManager.Core", "Maui.FinancialManager.Core\Maui.FinancialManager.Core.csproj", "{1F4CD801-B168-4983-866D-786354A27620}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maui.FinancialManager.Tests", "Maui.FinancialManager.Tests\Maui.FinancialManager.Tests.csproj", "{EECAE3D4-96BB-454E-A0A4-0A3B823A5EEB}"
+Project("{9344BDBB-3E7F-41FC-A0DD-8665D75EE146}") = "Maui.FinancialManager.Tests", "Maui.FinancialManager.Tests\Maui.FinancialManager.Tests.csproj", "{81EC54E1-74E2-4CAB-B7FC-78F1B3ACFC26}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,10 +25,10 @@ Global
 		{1F4CD801-B168-4983-866D-786354A27620}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F4CD801-B168-4983-866D-786354A27620}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1F4CD801-B168-4983-866D-786354A27620}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EECAE3D4-96BB-454E-A0A4-0A3B823A5EEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EECAE3D4-96BB-454E-A0A4-0A3B823A5EEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EECAE3D4-96BB-454E-A0A4-0A3B823A5EEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EECAE3D4-96BB-454E-A0A4-0A3B823A5EEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81EC54E1-74E2-4CAB-B7FC-78F1B3ACFC26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81EC54E1-74E2-4CAB-B7FC-78F1B3ACFC26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81EC54E1-74E2-4CAB-B7FC-78F1B3ACFC26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81EC54E1-74E2-4CAB-B7FC-78F1B3ACFC26}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
