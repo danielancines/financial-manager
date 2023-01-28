@@ -2,10 +2,15 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Maui.FinancialManager.Views.AccountView"
+             xmlns:viewModels="clr-namespace:Maui.FinancialManager.ViewModels"
+             x:DataType="viewModels:AccountViewModel"
              Title="My Profile">
-    <VerticalStackLayout>
-        <Image/>
-        <Label Text="My Photo"/>
-        <Button Text="Logout" Command="{Binding LogoutCommand}" VerticalOptions="End"/>
-    </VerticalStackLayout>
+    <StackLayout>
+        <Label Text="Configurações" HorizontalTextAlignment="Center" Margin="0,15" FontSize="24"/>
+        <HorizontalStackLayout>
+            <Label Text="Use FaceId" Margin="0,0,10,0" VerticalTextAlignment="Center"/>
+            <Switch IsToggled="{Binding UseBiometric}"/>
+        </HorizontalStackLayout>
+        <Button Text="Logout" Command="{Binding LogoutCommand}" VerticalOptions="EndAndExpand" Margin="15"/>
+    </StackLayout>
 </ContentPage>

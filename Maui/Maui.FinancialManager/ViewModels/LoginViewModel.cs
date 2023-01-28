@@ -10,6 +10,8 @@ namespace Maui.FinancialManager.ViewModels;
 
 public partial class LoginViewModel : ObservableObject
 {
+    const string USE_BIOMETRIC = "useBiometric";
+
     public LoginViewModel()
     {
         this.Initialize();
@@ -86,11 +88,14 @@ public partial class LoginViewModel : ObservableObject
         if (Preferences.ContainsKey(nameof(this.UserLogin)))
             this.UserLogin = Preferences.Get(nameof(this.UserLogin), string.Empty);
 
-        var hasBiometric = await CrossFingerprint.Current.GetAvailabilityAsync();
-        this.HasBiometricAuthentication = hasBiometric == FingerprintAvailability.Available;
+        if (Preferences.Get(USE_BIOMETRIC, false))
+        {
+            var hasBiometric = await CrossFingerprint.Current.GetAvailabilityAsync();
+            this.HasBiometricAuthentication = hasBiometric == FingerprintAvailability.Available;
 
-        if (this.HasBiometricAuthentication && !string.IsNullOrEmpty(this.UserLogin))
-            this.LoginByFaceIdCommand.Execute(null);
+            if (this.HasBiometricAuthentication && !string.IsNullOrEmpty(this.UserLogin))
+                this.LoginByFaceIdCommand.Execute(null);
+        }
     }
 }
 
