@@ -1,8 +1,7 @@
-﻿using System.Text;
+﻿using System.Diagnostics;
+using System.Text;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using CommunityToolkit.Mvvm.Messaging;
-using Maui.FinancialManager.Messages;
 using Newtonsoft.Json;
 using Plugin.Fingerprint;
 using Plugin.Fingerprint.Abstractions;
@@ -90,7 +89,7 @@ public partial class LoginViewModel : ObservableObject
         var hasBiometric = await CrossFingerprint.Current.GetAvailabilityAsync();
         this.HasBiometricAuthentication = hasBiometric == FingerprintAvailability.Available;
 
-        if (this.HasBiometricAuthentication)
+        if (this.HasBiometricAuthentication && !string.IsNullOrEmpty(this.UserLogin))
             this.LoginByFaceIdCommand.Execute(null);
     }
 }
