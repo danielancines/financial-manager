@@ -2,6 +2,8 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Maui.FinancialManager.Views.LoginView"
+             xmlns:viewModels="clr-namespace:Maui.FinancialManager.ViewModels"
+             x:DataType="viewModels:LoginViewModel"
              Title="">
 
     <Grid RowDefinitions="*, Auto">

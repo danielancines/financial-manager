@@ -12,13 +12,16 @@ public class DrogaraiaSerializer : BaseSerializer<Medicine>
     {
         var medicines = new List<Medicine>();
 
+        rootElement = rootElement.Value<JsonElement>("data", JsonValueTypes.JsonElement);
+        if (rootElement.ValueKind == JsonValueKind.Null)
+            return medicines;
+
         var search = rootElement.Value<JsonElement>("search", JsonValueTypes.JsonElement);
         if (search.ValueKind == JsonValueKind.Null)
             return medicines;
 
         foreach (var item in search.Value<JsonElement.ArrayEnumerator>("products", JsonValueTypes.Array))
         {
-
             var hasStock = item.Value<JsonElement>("availability", JsonValueTypes.JsonElement).Value<bool>("hasStock", JsonValueTypes.Boolean);
             if (!hasStock)
                 continue;

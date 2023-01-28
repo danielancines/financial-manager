@@ -20,6 +20,8 @@ public static class JsonElementExtensions
             case JsonValueTypes.String:
                 return (T)Convert.ChangeType(property.GetString(), typeof(T));
             case JsonValueTypes.Array:
+                if (property.ValueKind != JsonValueKind.Array)
+                    return default(T);
                 return (T)Convert.ChangeType(property.EnumerateArray(), typeof(T));
             case JsonValueTypes.JsonElement:
                 return (T)Convert.ChangeType(property, typeof(T));

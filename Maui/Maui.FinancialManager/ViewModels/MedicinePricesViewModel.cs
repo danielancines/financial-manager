@@ -60,9 +60,18 @@ public partial class MedicinePricesViewModel : ObservableObject
 
     async Task Search(IMedicineSearcher searcher)
     {
-        var medicines = await searcher.SearchAsync(this.SearchTerm);
-        foreach (var medicine in medicines)
-            this.Medicines.AddOrdered(medicine);
+        try
+        {
+            var medicines = await searcher.SearchAsync(this.SearchTerm);
+            if (medicines != null)
+                foreach (var medicine in medicines)
+                    this.Medicines.AddOrdered(medicine);
+
+        }
+        catch (Exception ex)
+        {
+            _= Shell.Current.DisplayAlert("Error", $"Error at ViewModel: {ex.Message} - {searcher} - {ex.InnerException?.Message}", "Ok");
+        }
     }
 }
 
