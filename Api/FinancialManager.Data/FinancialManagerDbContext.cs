@@ -15,4 +15,5 @@ public class FinancialManagerDbContext : DbContext
     }
 
     public virtual DbSet<User> Users { get; set; }
+    public virtual DbSet<Product> Products { get; set; }
 }
