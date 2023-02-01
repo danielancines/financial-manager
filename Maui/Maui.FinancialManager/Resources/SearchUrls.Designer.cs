@@ -59,14 +59,5 @@ namespace Maui.FinancialManager.Resources {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {&quot;operationName&quot;:&quot;Search&quot;,&quot;variables&quot;:{&quot;searchInput&quot;:{&quot;term&quot;:&quot;!searchTerm!&quot;,&quot;pagination&quot;:{&quot;page&quot;:0,&quot;window&quot;:10},&quot;stixAcceleratorId&quot;:null,&quot;enableMarketplace&quot;:true,&quot;searchApiVersion&quot;:&quot;LINX&quot;,&quot;branchIdBranchStockId&quot;:null}},&quot;query&quot;:&quot;query Search($searchInput: SearchInput!, $isStixNewAccelerator: Boolean, $token: String) {\n  search(search: $searchInput, token: $token, isStixNewAccelerator: $isStixNewAccelerator) {\n    ...SearchResult\n    __typename\n  }\n}\n\nfragment SearchResult on SearchResult {\n  sorts {\ [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string DrogaRaia {
-            get {
-                return ResourceManager.GetString("DrogaRaia", resourceCulture);
-            }
-        }
     }
 }
