@@ -20,5 +20,21 @@
     <ProjectReference Include="..\FinancialManager.Commons\FinancialManager.Commons.csproj" />
     <ProjectReference Include="..\FinancialManager.Data\FinancialManager.Data.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Models\**" />
+    <Compile Remove="Repositories\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Remove="Models\**" />
+    <EmbeddedResource Remove="Repositories\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Models\**" />
+    <None Remove="Repositories\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="Models\**" />
+    <Content Remove="Repositories\**" />
+  </ItemGroup>
 
 </Project>

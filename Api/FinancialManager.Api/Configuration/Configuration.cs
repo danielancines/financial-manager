@@ -49,7 +49,7 @@ public static class Configuration
     public static IServiceCollection RegisterRepositories(this IServiceCollection services)
     {
         services.AddTransient<UserRepository>();
-
+        services.AddTransient<ProductRepository>();
         return services;
     }
 
