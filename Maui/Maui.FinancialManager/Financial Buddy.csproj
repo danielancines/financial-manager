@@ -93,7 +93,6 @@
 		<None Remove="Resources\Images\business.svg" />
 		<None Remove="Resources\Images\pig_icon.svg" />
 		<None Remove="Resources\Icons\" />
-		<None Remove="Resources\Icons\pig_icon.svg" />
 		<None Remove="Extensions\" />
 		<None Remove="Primitives\" />
 		<None Remove="Serializers\Base\" />
@@ -112,7 +111,6 @@
 		<Folder Include="Configuration\" />
 		<Folder Include="Helpers\" />
 		<Folder Include="Messages\" />
-		<Folder Include="Resources\Icons\" />
 		<Folder Include="Extensions\" />
 		<Folder Include="Primitives\" />
 		<Folder Include="Serializers\Base\" />
@@ -171,11 +169,19 @@
 		<MauiImage Include="Resources\Images\*svg" />
 		<MauiImage Include="Resources\Images\*png" />
 		<MauiImage Include="Resources\Images\*jpg" />
-		<MauiImage Include="Resources\Icons\*" />
 	</ItemGroup>
 	<ItemGroup>
 		<BundleResource Include="Resources\*" />
 		<!--<BundleResource Include="**/*" />-->
 		<BundleResource Include="**/*" />
+	</ItemGroup>
+	<ItemGroup>
+	  <AndroidResource Remove="Resources\Icons\**" />
+	  <BundleResource Remove="Resources\Icons\**" />
+	  <Compile Remove="Resources\Icons\**" />
+	  <EmbeddedResource Remove="Resources\Icons\**" />
+	  <MauiCss Remove="Resources\Icons\**" />
+	  <MauiXaml Remove="Resources\Icons\**" />
+	  <None Remove="Resources\Icons\**" />
 	</ItemGroup>
 </Project>
