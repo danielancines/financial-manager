@@ -17,7 +17,7 @@ public class DrogaraiaSerializer : BaseSerializer<Medicine>
             return medicines;
 
         var search = rootElement.Value<JsonElement>("search", JsonValueTypes.JsonElement);
-        if (search.ValueKind == JsonValueKind.Null)
+        if (search.ValueKind == JsonValueKind.Null || search.ValueKind == JsonValueKind.Undefined)
             return medicines;
 
         foreach (var item in search.Value<JsonElement.ArrayEnumerator>("products", JsonValueTypes.Array))
