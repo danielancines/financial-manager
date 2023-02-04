@@ -3,49 +3,37 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Maui.FinancialManager.Views.LoginView"
              xmlns:viewModels="clr-namespace:Maui.FinancialManager.ViewModels"
-             x:DataType="viewModels:LoginViewModel"
+             x:DataType="viewModels:LoginViewModel" BackgroundColor="#171717"
              Title="">
-
-    <Grid RowDefinitions="*, Auto">
-        <VerticalStackLayout Padding="15">
-            <Image Source="pig_icon.png" WidthRequest="80" HeightRequest="80" Margin="0,60,0,20"/>
-            <Label Text="Welcome Back!" FontSize="Title" HorizontalOptions="Center"/>
-            <Label Text="Login to your account" FontSize="Small" HorizontalOptions="Center" Margin="0,0,0,50"/>
-
-            <Label Text="Login"
-               Margin="0,0,0,5"
-               VerticalOptions="Center"
-               HorizontalOptions="Start" />
-
-            <Entry Margin="0,0,0,10" Text="{Binding UserLogin}" ReturnType="Send" Keyboard="Plain" ReturnCommand="{Binding LoginCommand}">
-                <Entry.Shadow>
-                    <Shadow Brush="Black"
-                        Offset="20,20"
-                        Radius="30"
-                        Opacity="0.8" />
-                </Entry.Shadow>
-            </Entry>
-            <Label Text="Password"
-               Margin="0,0,0,5"
-               VerticalOptions="Center"
-               HorizontalOptions="Start"/>
-            <Entry Margin="0,0,0,30" IsPassword="True" ReturnCommand="{Binding LoginCommand}" Text="{Binding UserPassword}"/>
-            <Button Text="Login" Command="{Binding LoginCommand}" CornerRadius="10" WidthRequest="150">
-                <Button.Shadow>
-                    <Shadow Brush="Black"
-                        Offset="20,20"
-                        Radius="30"
-                        Opacity="0.8" />
-                </Button.Shadow>
-            </Button>
-            <ImageButton Source="faceid.png" IsVisible="{Binding HasBiometricAuthentication}" Command="{Binding LoginByFaceIdCommand}" CornerRadius="10" WidthRequest="70" Margin="0,30,0,0">
-                <ImageButton.Shadow>
-                    <Shadow Brush="Black"
-                        Offset="20,20"
-                        Radius="30"
-                        Opacity="0.8" />
-                </ImageButton.Shadow>
-            </ImageButton>
+    <Grid RowDefinitions="*,Auto">
+        <VerticalStackLayout>
+            <Grid RowDefinitions="*,Auto,Auto" Margin="0,50">
+                <Image Source="pig_icon.png" WidthRequest="80" HeightRequest="80" Margin="0,0,0,10"/>
+                <Label Text="Welcome Back!" Grid.Row="1" FontSize="38" HorizontalOptions="Center"/>
+                <Label Text="Login to your account" Grid.Row="2" FontSize="16" HorizontalOptions="Center"/>
+            </Grid>
+            <Border Margin="20,10">
+                <Border.Shadow>
+                    <Shadow Brush="#569cd6"
+                                Offset="0,0"
+                                Radius="5"
+                                Opacity="0.5" />
+                </Border.Shadow>
+                <VerticalStackLayout Padding="20">
+                    <Label Text="Login"
+                       Margin="0,0,0,5"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Start" />
+                    <Entry Margin="0,0,0,10" Text="{Binding UserLogin}" ReturnType="Send" Keyboard="Plain" ReturnCommand="{Binding LoginCommand}"/>
+                    <Label Text="Password"
+                       Margin="0,0,0,5"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Start"/>
+                    <Entry Margin="0,0,0,30" IsPassword="True" ReturnCommand="{Binding LoginCommand}" Text="{Binding UserPassword}"/>
+                    <Button Text="Login" Command="{Binding LoginCommand}" CornerRadius="10" WidthRequest="150"/>
+                    <ImageButton Source="faceid.png" IsVisible="{Binding HasBiometricAuthentication}" Command="{Binding LoginByFaceIdCommand}" CornerRadius="10" WidthRequest="70" Margin="0,30,0,0"/>
+                </VerticalStackLayout>
+            </Border>
         </VerticalStackLayout>
         <Label Text="{Binding Version}" Grid.Row="1" HorizontalOptions="Center" FontSize="Micro"/>
     </Grid>

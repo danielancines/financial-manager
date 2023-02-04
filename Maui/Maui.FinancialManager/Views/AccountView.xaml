@@ -5,12 +5,15 @@
              xmlns:viewModels="clr-namespace:Maui.FinancialManager.ViewModels"
              x:DataType="viewModels:AccountViewModel"
              Title="My Profile">
-    <StackLayout>
-        <Label Text="Configurações" HorizontalTextAlignment="Center" Margin="0,15" FontSize="24"/>
-        <HorizontalStackLayout>
-            <Label Text="Use FaceId" Margin="0,0,10,0" VerticalTextAlignment="Center"/>
-            <Switch IsToggled="{Binding UseBiometric}"/>
-        </HorizontalStackLayout>
-        <Button Text="Logout" Command="{Binding LogoutCommand}" VerticalOptions="EndAndExpand" Margin="15"/>
-    </StackLayout>
+    <Border Margin="5" StrokeShape="RoundRectangle 10">
+        <StackLayout Margin="10">
+            <Label Text="Configurações" HorizontalTextAlignment="Center" FontSize="24"/>
+            <Border  Margin="0,15" />
+            <HorizontalStackLayout>
+                <Label Text="Use FaceId" Margin="0,0,10,0" VerticalTextAlignment="Center"/>
+                <Switch IsToggled="{Binding UseBiometric}"/>
+            </HorizontalStackLayout>
+            <Button Text="Logout" Command="{Binding LogoutCommand}" VerticalOptions="EndAndExpand" Margin="15"/>
+        </StackLayout>
+    </Border>
 </ContentPage>
