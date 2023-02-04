@@ -6,17 +6,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7b2a6862-a57b-41e1-818c-aed73a0a8b8f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.FinancialManager.Api/.idea/indexLayout.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.FinancialManager.Api/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/Product.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Repositories/ProductRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FinancialManager.Data/Models/Product.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FinancialManager.Data/Repositories/ProductRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.FinancialManager.Api/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FinancialManager.Api/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Configuration/Configuration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Configuration/Configuration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/ProductController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/ProductController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FinancialManager.Api.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/FinancialManager.Api.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FinancialManager.Data/FinancialManagerDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../FinancialManager.Data/FinancialManagerDbContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Maui/Maui.FinancialManager/AppShellMobile.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Maui/Maui.FinancialManager/AppShellMobile.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Maui/Maui.FinancialManager/Financial Buddy.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/../../Maui/Maui.FinancialManager/Financial Buddy.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Maui/Maui.FinancialManager/Searchers/DrogaRaiaSearcher.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Maui/Maui.FinancialManager/Searchers/DrogaRaiaSearcher.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Maui/Maui.FinancialManager/Serializers/DrogaraiaSerializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Maui/Maui.FinancialManager/Serializers/DrogaraiaSerializer.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,7 +87,7 @@
       <option name="presentableId" value="Default" />
       <updated>1674741414085</updated>
       <workItem from="1674741415273" duration="629000" />
-      <workItem from="1675164706138" duration="2543000" />
+      <workItem from="1675164706138" duration="4757000" />
     </task>
     <servers />
   </component>

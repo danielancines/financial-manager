@@ -13,7 +13,7 @@ public class DrogaraiaSerializer : BaseSerializer<Medicine>
         var medicines = new List<Medicine>();
 
         rootElement = rootElement.Value<JsonElement>("data", JsonValueTypes.JsonElement);
-        if (rootElement.ValueKind == JsonValueKind.Null)
+        if (rootElement.ValueKind == JsonValueKind.Null || rootElement.ValueKind == JsonValueKind.Undefined)
             return medicines;
 
         var search = rootElement.Value<JsonElement>("search", JsonValueTypes.JsonElement);
