@@ -33,7 +33,7 @@ public class AuthenticationController
         return new
         {
             user = resultUser.Login,
-            userName = resultUser.Name,
+            userName = $"{resultUser.Name} {resultUser.LastName}",
             token
         };
     }

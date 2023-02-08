@@ -1,38 +1,37 @@
 using FinancialManager.Data.Models;
 using Microsoft.EntityFrameworkCore;
+using MongoDB.Driver;
 
 namespace FinancialManager.Data.Repositories;
 
 public class ProductRepository
 {
-    private FinancialManagerDbContext _context;
-    public ProductRepository(FinancialManagerDbContext context)
+    private readonly IMongoCollection<Product> _productsCollection;
+    //private FinancialManagerDbContext _context;
+    public ProductRepository(FinancialBuddyDatabaseSettings financialBuddyDatabaseSettings)
     {
-        this._context = context;
+        var mongoClient = new MongoClient(financialBuddyDatabaseSettings.ConnectionString);
+        var mongoDatabase = mongoClient.GetDatabase(financialBuddyDatabaseSettings.DatabaseName);
+        _productsCollection = mongoDatabase.GetCollection<Product>(financialBuddyDatabaseSettings.ProductsCollectionName);
     }
     public IEnumerable<Product> Get()
     {
-        return this._context.Products;
+        return this._productsCollection.Find(_ => true).ToEnumerable();
     }
 
     public bool Add(Product product)
     {
-        this._context.Products.Add(product);
-        return this._context.SaveChanges() > 0;
+        this._productsCollection.InsertOne(product);
+        return true;
     }
     
-    public bool Delete(Guid id)
+    public bool Delete(string id)
     {
-        var product = this._context.Products.FirstOrDefault(p=> p.Id.Equals(id));
+        var product = this._productsCollection.Find(p=> p.Id == id).FirstOrDefault();
         if (product == null)
             return false;
-        
-        var result = this._context.Products.Remove(product);
-        if (result.State == EntityState.Deleted)
-        {
-            this._context.SaveChanges();
-            return true;
-        }
-        return false;
+
+        var result = this._productsCollection.DeleteOne(p => p.Id == id);
+        return result.DeletedCount > 0;
     }
 }   

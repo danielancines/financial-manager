@@ -5,53 +5,61 @@
              xmlns:viewModels="clr-namespace:Maui.FinancialManager.ViewModels"
              xmlns:models="clr-namespace:Maui.FinancialManager.Models"
              x:DataType="viewModels:MedicinePricesViewModel"
-             Title="Medicine Search">
+             Title="Pesquisa de Medicamentos">
     <ContentPage.Resources>
-        <Style TargetType="Grid">
-            <Setter Property="VisualStateManager.VisualStateGroups">
-                <VisualStateGroupList>
-                    <VisualStateGroup x:Name="CommonStates">
-                        <VisualState x:Name="Normal" />
-                        <VisualState x:Name="Selected">
-                            <VisualState.Setters>
-                                <Setter Property="BackgroundColor"
+        <ResourceDictionary>
+            <Style TargetType="Frame">
+                <Setter Property="BackgroundColor" Value="#2f2f2f"/>
+                <Setter Property="Padding" Value="10"/>
+                <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray500}}" />
+            </Style>
+            <Style TargetType="Grid">
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal" />
+                            <VisualState x:Name="Selected">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor"
                                         Value="#46182257" />
-                            </VisualState.Setters>
-                        </VisualState>
-                    </VisualStateGroup>
-                </VisualStateGroupList>
-            </Setter>
-        </Style>
-        <Style TargetType="SwipeView">
-            <Setter Property="VisualStateManager.VisualStateGroups">
-                <VisualStateGroupList>
-                    <VisualStateGroup x:Name="CommonStates">
-                        <VisualState x:Name="Normal" />
-                        <VisualState x:Name="Selected">
-                            <VisualState.Setters>
-                                <Setter Property="BackgroundColor"
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+            <Style TargetType="SwipeView">
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal" />
+                            <VisualState x:Name="Selected">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor"
                                         Value="Transparent" />
-                            </VisualState.Setters>
-                        </VisualState>
-                    </VisualStateGroup>
-                </VisualStateGroupList>
-            </Setter>
-        </Style>
-        <Style TargetType="Border">
-            <Setter Property="VisualStateManager.VisualStateGroups">
-                <VisualStateGroupList>
-                    <VisualStateGroup x:Name="CommonStates">
-                        <VisualState x:Name="Normal" />
-                        <VisualState x:Name="Selected">
-                            <VisualState.Setters>
-                                <Setter Property="BackgroundColor"
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+            <Style TargetType="Border">
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal" />
+                            <VisualState x:Name="Selected">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor"
                                         Value="#171717" />
-                            </VisualState.Setters>
-                        </VisualState>
-                    </VisualStateGroup>
-                </VisualStateGroupList>
-            </Setter>
-        </Style>
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+        </ResourceDictionary>
+
     </ContentPage.Resources>
     <Grid RowDefinitions="Auto, Auto, *, Auto" Margin="15">
         <Border StrokeShape="RoundRectangle 10" >
@@ -62,35 +70,17 @@
             </Grid>
         </Border>
 
-        <Label HorizontalOptions="Center" Text="Resultados Encontrados" FontSize="20" Grid.Row="1" Grid.ColumnSpan="2" Margin="0,10,0,0"/>
-        <Border StrokeThickness="1" Padding="5" StrokeShape="RoundRectangle 10" Grid.Row="2" Grid.ColumnSpan="2">
-            <CollectionView x:Name="MedicinesList" ItemsSource="{Binding Medicines}" SelectionMode="Single"
-                            VerticalScrollBarVisibility="Always" Margin="5" SelectedItem="{Binding SelectedMedicine}">
-                <CollectionView.ItemsLayout>
-                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
-                </CollectionView.ItemsLayout>
-                <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="models:Medicine">
-                        <Border StrokeShape="RoundRectangle 10" Padding="10">
-                            <SwipeView>
-                                <SwipeView.LeftItems>
-                                    <SwipeItems>
-                                        <SwipeItem Text="Favorite"
-                                               IconImageSource="favorite.png"
-                                               BackgroundColor="LightGreen"/>
-                                        <SwipeItem Text="Delete"
-                                               IconImageSource="delete.png"
-                                               BackgroundColor="LightPink"/>
-                                    </SwipeItems>
-                                </SwipeView.LeftItems>
-                                <!--<Border.Shadow>
-                                    <Shadow Brush="white"
-                                        Offset="3,3"
-                                        Radius="5"
-                                        Opacity="0.6" />
-                                </Border.Shadow>-->
+        <Label HorizontalOptions="Center" Text="{Binding Medicines.Count, StringFormat='Resultados Encontrados ({0})'}" FontSize="20" Grid.Row="1" Grid.ColumnSpan="2" Margin="0,10,0,0"/>
+        <RefreshView Command="{Binding SearchCommand}" IsRefreshing="{Binding LoadingData}" Grid.Row="2" Grid.ColumnSpan="2">
+            <Border StrokeThickness="1" Padding="5" StrokeShape="RoundRectangle 10">
+                <CollectionView x:Name="MedicinesList" ItemsSource="{Binding Medicines}" SelectionMode="Single" Margin="5" SelectedItem="{Binding SelectedMedicine}">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:Medicine">
+                            <Frame>
                                 <Grid RowDefinitions="Auto, Auto, Auto, Auto" ColumnDefinitions="Auto, Auto, Auto">
-                                    <!--<Image Source="{Binding Thumbnail}" WidthRequest="84" HeightRequest="84"/>-->
                                     <Label Text="{Binding Name}" Grid.Row="1" FontSize="20" LineBreakMode="TailTruncation"/>
                                     <VerticalStackLayout Grid.Row="2" >
                                         <Label Text="{Binding Price, StringFormat='Preço: {0:c}'}" TextColor="Red" FontSize="16"/>
@@ -98,12 +88,12 @@
                                     </VerticalStackLayout>
                                     <Label Text="{Binding DrugStore, StringFormat='Farmácia: {0}'}" TextColor="Yellow" Grid.Row="3"/>
                                 </Grid>
-                            </SwipeView>
-                        </Border>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-        </Border>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Border>
+        </RefreshView>
         <Label Text="{Binding FooterAppInfo}" Grid.Row="3" FontSize="12" HorizontalOptions="End"/>
     </Grid>
 </ContentPage>

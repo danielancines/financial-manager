@@ -6,10 +6,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7b2a6862-a57b-41e1-818c-aed73a0a8b8f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../../Maui/Maui.FinancialManager/AppShellMobile.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Maui/Maui.FinancialManager/AppShellMobile.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.FinancialManager.Api/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FinancialManager.Api/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Configuration/Configuration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Configuration/Configuration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/AuthenticationController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/AuthenticationController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/ProductController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/ProductController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FinancialManager.Api.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/FinancialManager.Api.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Repositories/ProductRepository.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FinancialManager.Data/FinancialManager.Data.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/../FinancialManager.Data/FinancialManager.Data.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FinancialManager.Data/Models/Product.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../FinancialManager.Data/Models/Product.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FinancialManager.Data/Models/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../FinancialManager.Data/Models/User.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FinancialManager.Data/Repositories/ProductRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../FinancialManager.Data/Repositories/ProductRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FinancialManager.Data/Repositories/UserRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../FinancialManager.Data/Repositories/UserRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Maui/Maui.FinancialManager.Core/Collections/OrderedObservableCollection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Maui/Maui.FinancialManager.Core/Collections/OrderedObservableCollection.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Maui/Maui.FinancialManager.Core/Collections/Specialized/OrderedPropertyType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Maui/Maui.FinancialManager.Core/Collections/Specialized/OrderedPropertyType.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Maui/Maui.FinancialManager/AppShellMobile.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Maui/Maui.FinancialManager/AppShellMobile.xaml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Maui/Maui.FinancialManager/Configuration/BuildConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Maui/Maui.FinancialManager/Configuration/BuildConfiguration.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Maui/Maui.FinancialManager/Financial Buddy.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/../../Maui/Maui.FinancialManager/Financial Buddy.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Maui/Maui.FinancialManager/Searchers/DrogaRaiaSearcher.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Maui/Maui.FinancialManager/Searchers/DrogaRaiaSearcher.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Maui/Maui.FinancialManager/Serializers/DrogaraiaSerializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Maui/Maui.FinancialManager/Serializers/DrogaraiaSerializer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Maui/Maui.FinancialManager/Resources/Splash/splash_white.svg" beforeDir="false" afterPath="$PROJECT_DIR$/../../Maui/Maui.FinancialManager/Resources/Splash/splash_white.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Maui/Maui.FinancialManager/Views/MedicinePricesView.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Maui/Maui.FinancialManager/Views/MedicinePricesView.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Maui/Maui.FinancialManager/Views/ProductsPricesView.xaml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Maui/Maui.FinancialManager/Views/ProductsPricesView.xaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Maui/Maui.FinancialManager/Views/ProductsPricesView.xaml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Maui/Maui.FinancialManager/Views/ProductsPricesView.xaml.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,7 +36,8 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Models/Product.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Repositories/ProductRepository.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/4c2b604e6858dbcab439d5928a8b77a37d15f1e7bf79c2a2335fc7e41b2a8/Cluster.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/6ee561a7b7fcdb67d7d647658d4979511b1d61ef928ed8b5175e9e25fed2ce/Ensure.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -36,6 +55,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+    "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -88,6 +108,8 @@
       <updated>1674741414085</updated>
       <workItem from="1674741415273" duration="629000" />
       <workItem from="1675164706138" duration="4757000" />
+      <workItem from="1675771336661" duration="738000" />
+      <workItem from="1675776382411" duration="15198000" />
     </task>
     <servers />
   </component>

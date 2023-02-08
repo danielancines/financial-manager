@@ -2,14 +2,41 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Maui.FinancialManager.Views.ProductsPricesView"
-             xmlns:zxing="clr-namespace:ZXing.Net.Maui.Controls;assembly=ZXing.Net.MAUI"
-             Title="ProductsPricesView">
-    <Grid RowDefinitions="Auto, *">
-        <Label x:Name="ResultLabel"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-        <zxing:CameraBarcodeReaderView Grid.Row="1"
-              x:Name="cameraBarcodeReaderView"
-              BarcodesDetected="cameraBarcodeReaderView_BarcodesDetected"/>
-    </Grid>
+             xmlns:viewModel="clr-namespace:Maui.FinancialManager.ViewModels"
+             xmlns:model="clr-namespace:Maui.FinancialManager.Models"
+             x:DataType="viewModel:ProductsPricesViewModel"
+             Title="Preços">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Frame">
+                <Setter Property="BackgroundColor" Value="#2f2f2f"/>
+                <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray500}}" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Border Margin="5" StrokeShape="RoundRectangle 10">
+        <Grid Margin="25" RowDefinitions="Auto,Auto,Auto,Auto,Auto,*" ColumnDefinitions="Auto, *, Auto" Padding="5">
+            <Label Text="Código de Barras" VerticalTextAlignment="Center" Margin="0,0,10,0"/>
+            <Entry Grid.ColumnSpan="2" Grid.Row="1" Margin="0,10,20,0" Text="{Binding ProductBarCode, Mode=TwoWay}"/>
+            <ImageButton Grid.Column="2" Grid.Row="1" Source="barcode.png" Margin="0,10,0,0" WidthRequest="40" Command="{Binding OpenBarcodeReaderCommand}"/>
+            <Border Grid.Row="2" Margin="0,15,0,0" Grid.ColumnSpan="3"/>
+            <Label Text="Name" Grid.Row="3" Margin="0,15,0,0"/>
+            <Entry Grid.ColumnSpan="3" Grid.Row="4" Margin="0,10,0,0"/>
+            <CollectionView ItemsSource="{Binding Products}" Grid.Row="5" Margin="0,30,0,0">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:Product">
+                        <Frame CornerRadius="15">
+                            <Grid RowDefinitions="Auto, Auto, Auto, Auto" ColumnDefinitions="Auto, Auto, Auto">
+                                <Label Text="{Binding Name}" Grid.Row="0" FontSize="20" LineBreakMode="TailTruncation"/>
+                                <Label Text="{Binding Description}" Grid.Row="1" FontSize="20" LineBreakMode="TailTruncation"/>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </Border>
 </ContentPage>

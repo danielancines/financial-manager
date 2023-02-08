@@ -33,7 +33,7 @@ namespace FinancialManager.Api.Controllers
         }
 
         [HttpDelete("{id}")]
-        public ActionResult Delete(Guid id)
+        public ActionResult Delete(string id)
         {
             return this._productRepository.Delete(id) ? Ok() : NotFound();
         }

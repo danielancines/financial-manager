@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.DataProtection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using FinancialManager.Data.Models;
 
 namespace FinancialManager.Api.Configuration;
 
@@ -50,6 +51,26 @@ public static class Configuration
     {
         services.AddTransient<UserRepository>();
         services.AddTransient<ProductRepository>();
+        return services;
+    }
+
+    public static IServiceCollection ConfigureMongoDb(this IServiceCollection services, WebApplicationBuilder builder)
+    {
+        var configurationSection = builder.Configuration.GetSection("FinancialBuddyDatabase");
+        var dbUser = Environment.GetEnvironmentVariable("DbUser") ?? builder.Configuration["DbUser"];
+        var dbPwd = Environment.GetEnvironmentVariable("DbPWd") ?? builder.Configuration["DbPwd"];
+        var serverUri = Environment.GetEnvironmentVariable("ServerUri") ?? builder.Configuration["ServerUri"];
+        var connectionString = configurationSection.GetValue<string>("ConnectionString").Replace("{User}", dbUser).Replace("{Password}", dbPwd).Replace("{serverUri}", serverUri);
+        var databaseName = configurationSection.GetValue<string>("DatabaseName");
+        var usersCollectionName = configurationSection.GetValue<string>("UsersCollectionName");
+        var productsCollectionName = configurationSection.GetValue<string>("ProductsCollectionName");
+        
+        services.AddSingleton(new FinancialBuddyDatabaseSettings(connectionString, databaseName)
+        {
+            UsersCollectionName = usersCollectionName,
+            ProductsCollectionName = productsCollectionName
+        });
+        
         return services;
     }
 

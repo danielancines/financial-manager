@@ -31,9 +31,20 @@ public class OrderedObservableCollection<T> : ObservableCollection<T>
         {
             case OrderedPropertyType.Float:
                 return this.ProcessFloat(newItem);
+            case OrderedPropertyType.String:
+                return this.ProcessString(newItem);
             default:
                 return this.Items.Count;
         }
+    }
+
+    private int ProcessString(T newItem)
+    {
+        foreach (var item in this.Items)
+            if (string.CompareOrdinal(this.ParseValueToString(item), this.ParseValueToString(newItem)) > 0)
+                return this.Items.IndexOf(item);
+
+        return this.Items.Count;
     }
 
     private int ProcessFloat(T newItem)
@@ -55,6 +66,19 @@ public class OrderedObservableCollection<T> : ObservableCollection<T>
         catch
         {
             return 0;
+        }
+    }
+
+    private string ParseValueToString(T item)
+    {
+        try
+        {
+            var property = item.GetType().GetProperty(this.OrderBy);
+            return property.GetValue(item).ToString();
+        }
+        catch
+        {
+            return string.Empty;
         }
     }
 }

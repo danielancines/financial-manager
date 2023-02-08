@@ -13,6 +13,7 @@ public partial class AppShellMobile : Shell
     void InitializeRoutes()
     {
         Routing.RegisterRoute("login", typeof(LoginView));
+        Routing.RegisterRoute("barcodereader", typeof(BarcodeReaderView));
         Routing.RegisterRoute("medicinesearch/medicinedetail", typeof(MedicineDetailsView));
     }
 }

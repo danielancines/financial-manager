@@ -49,6 +49,15 @@
 	  <CodesignKey>iPhone Developer</CodesignKey>
 	  <CodesignEntitlements>Platforms\iOS\Entitlements.plist</CodesignEntitlements>
 	</PropertyGroup>
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+	  <WarningLevel>4</WarningLevel>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-maccatalyst|AnyCPU'">
+	  <CreatePackage>false</CreatePackage>
+	  <CodesignKey>Mac Developer</CodesignKey>
+	  <PackageSigningKey>3rd Party Mac Developer Installer</PackageSigningKey>
+	  <EnableCodeSigning>False</EnableCodeSigning>
+	</PropertyGroup>
 	<ItemGroup>
 		<!-- App Icon -->
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#171717" TintColor="#569cd6" Size="16,16" />
@@ -100,6 +109,9 @@
 		<None Remove="Plugin.Fingerprint" />
 		<None Remove="Resources\Images\faceid.svg" />
 		<None Remove="Resources\Images\pills.svg" />
+		<None Remove="Resources\Images\barcode.svg" />
+		<None Remove="Services\" />
+		<None Remove="Services\Base\" />
 	</ItemGroup>
 	<ItemGroup>
 		<Folder Include="Views\" />
@@ -114,6 +126,8 @@
 		<Folder Include="Extensions\" />
 		<Folder Include="Primitives\" />
 		<Folder Include="Serializers\Base\" />
+		<Folder Include="Services\" />
+		<Folder Include="Services\Base\" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\Maui.FinancialManager.Core\Maui.FinancialManager.Core.csproj" />
@@ -160,6 +174,10 @@
 			<SubType>
 			</SubType>
 		</MauiXaml>
+		<MauiXaml Update="Views\BarcodeReaderView.xaml">
+			<SubType>
+			</SubType>
+		</MauiXaml>
 	</ItemGroup>
 	<ItemGroup>
 		<MauiImage Remove="Resources\AppIcon\appicon.svg" />
@@ -173,7 +191,6 @@
 	<ItemGroup>
 		<BundleResource Include="Resources\*" />
 		<!--<BundleResource Include="**/*" />-->
-		<BundleResource Include="**/*" />
 	</ItemGroup>
 	<ItemGroup>
 	  <AndroidResource Remove="Resources\Icons\**" />
