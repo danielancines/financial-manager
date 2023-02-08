@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33110.190
 MinimumVisualStudioVersion = 10.0.40219.1                              
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FinancialManager.Api", "FinancialManager.Api.csproj", "{85D6D6D5-9094-4E81-921B-CFF04B5124F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FinancialManager.Api", "FinancialManager.Api\FinancialManager.Api.csproj", "{85D6D6D5-9094-4E81-921B-CFF04B5124F4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinancialManager.Data", "FinancialManager.Data\FinancialManager.Data.csproj", "{AA91DC51-BABD-41C4-AE3E-D1439137EE0C}"
 EndProject
