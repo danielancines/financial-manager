@@ -10,11 +10,7 @@ builder.Services.AddControllers();
 builder.Services
     .AddEndpointsApiExplorer()
     .AddSwaggerGen()
-    .ConfigureMongoDb(builder)
-    .ConfigureContexts(builder.Configuration["FinancialManagerDbUser"], builder.Configuration["FinancialManagerDbPwd"])
-    .ConfigureServices()
-    .RegisterServices()
-    .RegisterRepositories();
+    .ConfigureApi(builder);
 
 var app = builder.Build();
 

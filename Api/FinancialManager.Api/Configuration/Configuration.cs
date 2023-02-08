@@ -7,12 +7,29 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using FinancialManager.Data.Models;
+using FinancialManager.Commons.Helpers;
 
 namespace FinancialManager.Api.Configuration;
 
 public static class Configuration
 {
-    public static IServiceCollection ConfigureServices(this IServiceCollection services)
+    public static IServiceCollection ConfigureApi(this IServiceCollection services, WebApplicationBuilder builder)
+    {
+        ConfigureSecurity(services, builder);
+        ConfigureServices(services);
+        RegisterServices(services);
+        RegisterRepositories(services);
+        ConfigureMongoDb(services, builder);
+
+        return services;
+    }
+    static IServiceCollection ConfigureSecurity(this IServiceCollection services, WebApplicationBuilder builder)
+    {
+        CryptHelper.CryptEncodingKey = builder.Configuration["CryptEncodingKey"] ?? string.Empty;
+        return services;
+    }
+
+    static IServiceCollection ConfigureServices(this IServiceCollection services)
     {
         services.AddCors();
         services.AddControllers();
@@ -39,7 +56,7 @@ public static class Configuration
         return services;
     }
 
-    public static IServiceCollection RegisterServices(this IServiceCollection services)
+    static IServiceCollection RegisterServices(this IServiceCollection services)
     {
         services.AddTransient<TokenService>();
         services.AddTransient<UserService>();
@@ -47,14 +64,14 @@ public static class Configuration
         return services;
     }
 
-    public static IServiceCollection RegisterRepositories(this IServiceCollection services)
+    static IServiceCollection RegisterRepositories(this IServiceCollection services)
     {
         services.AddTransient<UserRepository>();
         services.AddTransient<ProductRepository>();
         return services;
     }
 
-    public static IServiceCollection ConfigureMongoDb(this IServiceCollection services, WebApplicationBuilder builder)
+    static IServiceCollection ConfigureMongoDb(this IServiceCollection services, WebApplicationBuilder builder)
     {
         var configurationSection = builder.Configuration.GetSection("FinancialBuddyDatabase");
         var dbUser = Environment.GetEnvironmentVariable("DbUser") ?? builder.Configuration["DbUser"];
@@ -71,20 +88,6 @@ public static class Configuration
             ProductsCollectionName = productsCollectionName
         });
         
-        return services;
-    }
-
-    public static IServiceCollection ConfigureContexts(this IServiceCollection services, string user, string dbPwd)
-    {
-        var envUser = Environment.GetEnvironmentVariable("DbUser");
-        var envPwd = Environment.GetEnvironmentVariable("DbPWd");
-        user = envUser ?? user;
-        dbPwd = envPwd ?? dbPwd;
-        services.AddDbContext<FinancialManagerDbContext>(options =>
-        options
-        .UseLazyLoadingProxies()
-        .UseSqlServer($"Data Source=192.168.0.175,1433;Initial Catalog=PriceBuddyDb;User ID={user};Password={dbPwd};Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"));
-
         return services;
     }
 }
