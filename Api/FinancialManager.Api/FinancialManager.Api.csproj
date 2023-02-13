@@ -32,10 +32,14 @@
   <ItemGroup>
     <None Remove="Models\**" />
     <None Remove="Repositories\**" />
+    <None Remove="Services\Types\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="Models\**" />
     <Content Remove="Repositories\**" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Services\Types\" />
+  </ItemGroup>
 </Project>

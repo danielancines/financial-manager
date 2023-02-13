@@ -20,9 +20,26 @@ public static class Configuration
         RegisterServices(services);
         RegisterRepositories(services);
         ConfigureMongoDb(services, builder);
+        ConfigureVariables(services, builder);
 
         return services;
     }
+
+    static IServiceCollection ConfigureVariables(this IServiceCollection services, WebApplicationBuilder builder)
+    {
+        if (string.IsNullOrEmpty(Environment.GetEnvironmentVariable("nf-pwd")))
+            Environment.SetEnvironmentVariable("nf-pwd", builder.Configuration["nf-pwd"]);
+
+        if (string.IsNullOrEmpty(Environment.GetEnvironmentVariable("nf-email")))
+            Environment.SetEnvironmentVariable("nf-email", builder.Configuration["nf-email"]);
+
+        if (string.IsNullOrEmpty(Environment.GetEnvironmentVariable("nf-imei")))
+            Environment.SetEnvironmentVariable("nf-imei", builder.Configuration["nf-imei"]);
+
+
+        return services;
+    }
+
     static IServiceCollection ConfigureSecurity(this IServiceCollection services, WebApplicationBuilder builder)
     {
         CryptHelper.CryptEncodingKey = builder.Configuration["CryptEncodingKey"] ?? string.Empty;
@@ -60,6 +77,7 @@ public static class Configuration
     {
         services.AddTransient<TokenService>();
         services.AddTransient<UserService>();
+        services.AddTransient<InvestmentService>();
 
         return services;
     }
