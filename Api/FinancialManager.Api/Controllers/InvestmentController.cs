@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace FinancialManager.Api.Controllers;
 
 [ApiController]
-[Authorize]
+// [Authorize]
 [Route("api/v1/investment")]
 public class InvestmentController : ControllerBase
 {
