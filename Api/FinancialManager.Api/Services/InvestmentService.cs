@@ -32,7 +32,7 @@ public class InvestmentService
                 element = element.EnumerateArray().FirstOrDefault();
                 element.TryGetProperty("valor", out var selicRateElement);
 
-                return double.Parse(selicRateElement.GetString()) / 100;
+                return double.Parse(selicRateElement.GetString().Replace('.',',')) / 100;
             }
             else
                 return 0;

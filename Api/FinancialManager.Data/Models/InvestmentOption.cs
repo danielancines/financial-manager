@@ -45,23 +45,23 @@ public class InvestmentOption
     {
         if (deadLine <= 180)
         {
-            return 22.50;
+            return 0.2250;
         }
         else if (deadLine > 180 && deadLine <= 365)
         {
-            return 20;
+            return 0.20;
         }
         else if (deadLine > 365 && deadLine <= 720)
         {
-            return 17.50;
+            return 0.1750;
         }
         else if (deadLine > 720)
         {
-            return 15;
+            return 0.15;
         }
         else
         {
-            return 22.50;
+            return 0.2250;
         }
     }
 }
